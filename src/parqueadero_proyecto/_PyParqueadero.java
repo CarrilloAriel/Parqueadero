@@ -58,7 +58,7 @@ public class _PyParqueadero {
                 + "7.Quitar parqueaderos\n"
                + "8.Salir\n"
                + "9.Ver cola de carros\n");
-        //
+        //u
            System.out.println("Ingrese una opcion");
            int n = sc.nextInt();
         switch(n){
