@@ -7,25 +7,32 @@ public class Tarifa {
     private String valor;
 
     public Tarifa(String tiempo, String valor) {
+        this.tiempo = tiempo;
+        this.valor = valor;
     }
-
-    public String setTiempo(String tiempo) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    public String setValor(String valor) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
     public String getTiempo() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return tiempo;
+    }
+
+    public void setTiempo(String tiempo) {
+        this.tiempo = tiempo;
     }
 
     public String getValor() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return valor;
     }
 
-    public String toString() {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public void setValor(String valor) {
+        this.valor = valor;
     }
+
+    @Override
+    public String toString() {
+        return "Tiempo: " + tiempo + " valor: " + valor;
+    }
+    
+
+    
+    
+ 
 }
