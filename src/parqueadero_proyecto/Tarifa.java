@@ -2,34 +2,34 @@ package parqueadero_proyecto;
 
 public class Tarifa {
 
-    private int tiempo;
+    private String tiempo;
 
-    private int valor;
+    private double valor;
 
-    public Tarifa(int tiempo, int valor) {
+    public Tarifa(String tiempo, double valor) {
         this.tiempo = tiempo;
         this.valor = valor;
     }
     
-    public int getTiempo() {
+    public String getTiempo() {
         return tiempo;
     }
 
-    public void setTiempo(int tiempo) {
+    public void setTiempo(String tiempo) {
         this.tiempo = tiempo;
     }
 
-    public int getValor() {
+    public double getValor() {
         return valor;
     }
 
-    public void setValor(int valor) {
+    public void setValor(double valor) {
         this.valor = valor;
     }
 
     @Override
     public String toString() {
-        return "Tarifa{" + "tiempo=" + tiempo + ", valor=" + valor + '}';
+        return "Tiempo:" + tiempo+" valor: $" + valor;
     }
 
     
