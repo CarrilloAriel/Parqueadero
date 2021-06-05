@@ -5,6 +5,7 @@
  */
 package Base;
 
+import jdk.nashorn.internal.ir.BreakNode;
 import parqueadero_proyecto.Parqueadero;
 import parqueadero_proyecto.Vehiculo;
 
@@ -159,6 +160,22 @@ public class Lista {
         
         return true;
     }
+    public boolean desparquear(String placa){
+        
+        NodoLista aux = inicio;
+        
+            while(aux!=null && aux.getDato().getCarro()!=null){
+                if(placa.compareTo(aux.getDato().getCarro().getPlaca())==0){
+                    aux.getDato().setCarro(null);
+                    return true;                
+                }
+                aux = aux.getSiguiente();
+            
+            }
+        System.out.println("ESE CARRO NO ESTA PARQUEADO");            
+        
+        return false;
+    }
     public int contarLugaresDisponibles(){
         NodoLista aux = inicio;
         int cont=0;
@@ -172,31 +189,25 @@ public class Lista {
     }
     public boolean hayDisponible(){
         
-        NodoLista aux = inicio;
-        //boolean disponible = false;
-       
-        
+        NodoLista aux = inicio;        
         while(aux!=null){
-            if(aux.getDato().getCarro()==null){
-                
-                return true;
-                //break;
+            if(aux.getDato().getCarro()==null){                
+                return true;                
             }
             aux = aux.getSiguiente();
         }
         return false;
     }
-    public void verLugaresDisponibles(){
+    public boolean verLugaresDisponibles(){
         NodoLista aux = inicio;
-        int cont=0;
+        boolean x= false;      
         while(aux!=null){
             if(aux.getDato().getCarro()==null){
-                System.out.println(aux.getDato().getNumeroLugar()+" esta disponible");
-                
-            }
-            
+                System.out.println(aux.getDato().getNumeroLugar()+" esta disponible");   
+                x=true;
+            }            
             aux = aux.getSiguiente();
         }
-        
+        return x;
     }
 }

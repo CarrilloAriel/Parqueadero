@@ -57,7 +57,8 @@ public class _PyParqueadero {
                 + "6.Agregar parqueaderos\n"
                 + "7.Quitar parqueaderos\n"
                + "8.Salir\n"
-               + "9.Ver cola de carros\n");
+               + "9.Ver cola de carros\n"
+               + "10.Desparquear");
         //u///////
            System.out.println("Ingrese una opcion");
            int n = sc.nextInt();
@@ -75,14 +76,17 @@ public class _PyParqueadero {
                         Parqueaderos.parquear(ColaDeCarros.atender()); 
                          System.out.println("Se ha atendido un vehiculo");
                     }else{
-                        System.out.println("No hay lugares");
+                        System.out.println("No hay lugares para parquear");
                     }
                 break;
                 case 3:
-                    System.out.println(Parqueaderos.contarLugaresDisponibles());
+                    System.out.println(Parqueaderos.contarLugaresDisponibles());                        
+                    
                 break;
                 case 4:
-                    Parqueaderos.verLugaresDisponibles();
+                    if(Parqueaderos.verLugaresDisponibles()==false){
+                        System.out.println("NO HAY LUGARES DISPONIBLES");
+                    }
                 break;
                 case 5:
                     System.out.println(ColaDeCarros.contar());
@@ -96,7 +100,11 @@ public class _PyParqueadero {
                 break;
                 case 9:
                     ColaDeCarros.imprimir();
-                    break;
+                break;
+                case 10:
+                    System.out.println(Parqueaderos.desparquear("1"));
+                    //da error al entrar cuando no hay carros
+                break;
                 
         }
         
