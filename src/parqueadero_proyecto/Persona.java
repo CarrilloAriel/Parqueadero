@@ -4,13 +4,8 @@ import java.util.Date;
 public class Persona {
 
     private String Nombre;
-
-    private String Apellido;    
-
+    private String Apellido;   
     private Vehiculo vehiculo;
-
-    
-
     private Timer HoraEntrada;
 
     public Persona(String Nombre, String Apellido) {
@@ -19,36 +14,35 @@ public class Persona {
     }
 
     public String getNombre() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return Nombre;
     }
 
-    public String setNombre(String Nombre) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public void setNombre(String Nombre) {
+        this.Nombre = Nombre;
     }
 
     public String getApellido() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return Apellido;
     }
 
-    public String setApellido(String Apellido) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public void setApellido(String Apellido) {
+        this.Apellido = Apellido;
     }
 
     public Date getFecha() {
-        throw new UnsupportedOperationException("Not supported yet.");
-        
-        
+        return null;
     }
 
     public void setFecha(Date fecha) {
-        
+       
     }
 
     public Timer getHoraEntrada() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return HoraEntrada;
     }
 
     public void setHoraEntrada(Timer HoraEntrada) {
+        this.HoraEntrada = HoraEntrada;
     }
 
     public void setTarifa(String[] Tarifa) {
@@ -58,7 +52,10 @@ public class Persona {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    @Override
     public String toString() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return "Persona{" + "Nombre=" + Nombre + ", Apellido=" + Apellido + ", vehiculo=" + vehiculo + ", HoraEntrada=" + HoraEntrada + '}';
     }
+
+    
 }

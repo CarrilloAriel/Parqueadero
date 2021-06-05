@@ -3,14 +3,11 @@ package parqueadero_proyecto;
 public class Vehiculo {
 
     private String placa;
-
-    private String tipo;
-    
+    private String tipo;    
     private Timer horaEntrada;
     private Timer horaSalida;
 
-    public Vehiculo(String placa, String tipo,Persona persona) {
-        
+    public Vehiculo(String placa, String tipo,Persona persona) {        
         this.placa = placa;
         this.tipo = tipo;
     }
@@ -31,6 +28,24 @@ public class Vehiculo {
     public void setTipo(String tipo) {
         this.tipo=tipo;
     }
+
+    public Timer getHoraEntrada() {
+        return horaEntrada;
+    }
+
+    public Timer getHoraSalida() {
+        return horaSalida;
+    }
+
+    public void setHoraEntrada(Timer horaEntrada) {
+        this.horaEntrada = horaEntrada;
+    }
+
+    public void setHoraSalida(Timer horaSalida) {
+        this.horaSalida = horaSalida;
+    }
+    
+    
 
     @Override
     public String toString() {

@@ -48,12 +48,15 @@ public class _PyParqueadero {
            //System.out.println("No hay lugares");
        }
        while(!salir){
-       System.out.println("1.Ingresar al parqueadero\n"                
-                + "2.Ver numero de lugares lisponibles\n"
-                + "3.Ver que lugar esta disponible\n"
-                + "4.Ver longitud de la cola\n"
-                + "5.Agregar parqueaderos\n"
-                + "6.Quitar parqueaderos");
+           
+       System.out.println("1.Ingresar al parqueadero\n"
+               + "2.Atender"                
+                + "3.Ver numero de lugares lisponibles\n"
+                + "4.Ver que lugar esta disponible\n"
+                + "5.Ver longitud de la cola\n"
+                + "6.Agregar parqueaderos\n"
+                + "7.Quitar parqueaderos\n"
+               + "8.Salir");
         
            System.out.println("Ingrese una opcion");
            int n = sc.nextInt();
@@ -61,24 +64,28 @@ public class _PyParqueadero {
                 case 1:
                     ColaDeCarros.insertar(new Vehiculo("1", "2023", new Persona("Pepe", "1")));
                     ColaDeCarros.insertar(new Vehiculo("2", "2023", new Persona("Pepe", "2")));
-                    ColaDeCarros.insertar(new Vehiculo("3", "2023", new Persona("Pepe", "3")));
-                    
+                    ColaDeCarros.insertar(new Vehiculo("3", "2023", new Persona("Pepe", "3")));                    
                     ColaDeCarros.insertar(new Vehiculo("4", "2023", new Persona("Pepe", "4")));
                     ColaDeCarros.insertar(new Vehiculo("4", "2023", new Persona("Pepe", "4")));
                     ColaDeCarros.insertar(new Vehiculo("4", "2023", new Persona("Pepe", "4")));
                 break;
                 case 2:
-                    System.out.println(Parqueaderos.contarLugaresDisponibles());
+                    
                 break;
                 case 3:
-                    Parqueaderos.verLugaresDisponibles();
+                    System.out.println(Parqueaderos.contarLugaresDisponibles());
                 break;
                 case 4:
+                    Parqueaderos.verLugaresDisponibles();
                 break;
                 case 5:
                 break;
                 case 6:
                 break;
+                case 7:
+                    salir = true;
+                break;
+                
         }
         
         

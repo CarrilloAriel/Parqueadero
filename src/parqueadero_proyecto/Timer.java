@@ -12,30 +12,33 @@ public class Timer {
     }
 
     public int getHora() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return Hora;
     }
 
     public int getMinuto() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return minuto;
     }
 
     public int getSegundo() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return segundo;
     }
 
-    public int setHora(int Hora) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public void setHora(int Hora) {
+        this.Hora=Hora;
     }
 
-    public int setMinuto(int minuto) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public void setMinuto(int minuto) {
+        this.minuto = minuto;
     }
 
-    public int setSegundo(int setSegundo) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public void setSegundo(int setSegundo) {
+        this.segundo = segundo;
     }
 
+    @Override
     public String toString() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return "Timer{" + "Hora=" + Hora + ", minuto=" + minuto + ", segundo=" + segundo + '}';
     }
+
+   
 }

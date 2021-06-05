@@ -3,11 +3,9 @@ package parqueadero_proyecto;
 public class Recibo {
 
     private Timer HoraDeSalida;
-
+    private Timer HoraEntrada;
     private Vehiculo vehiculo;
-
     private double total;
-
     private Persona datosPersona;
 
     public void imprimirTicket() {
@@ -18,32 +16,42 @@ public class Recibo {
     }
 
     public Timer getHoraDeSalida() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return HoraDeSalida;
     }
 
-    public void setHoraDeSalidar(Timer horaDeSalidar) {
+    public void setHoraDeSalidar(Timer horaDeSalida) {
+        this.HoraDeSalida = horaDeSalida;
+    }
+
+    public Timer getHoraEntrada() {
+        return HoraEntrada;
+    }
+
+    public Vehiculo getVehiculo() {
+        return vehiculo;
+    }
+
+    public Persona getDatosPersona() {
+        return datosPersona;
     }
 
     public String getRecibo() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    public void setTicket(String ticket) {
+        return "";
     }
 
     public Vehiculo getVechiculo() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return vehiculo;
     }
 
-    public Vehiculo setVehiculo(Vehiculo vehiculo) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public void setVehiculo(Vehiculo vehiculo) {
+        this.vehiculo = vehiculo;
     }
 
     public double getTotal() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return total;
     }
 
-    public double setTotal(double total) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public void setTotal(double total) {
+        this.total = total;
     }
 }
