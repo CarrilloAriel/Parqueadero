@@ -7,6 +7,9 @@ package parqueadero_proyecto;
 
 import Base.Cola;
 import Base.Lista;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -24,7 +27,11 @@ public class _PyParqueadero {
         Cola ColaDeCarros = new Cola();
         Scanner sc = new Scanner(System.in);
         Lista Parqueaderos = new Lista();
-        
+        List <Tarifa> tarifas = new ArrayList<>();
+        tarifas.add(new Tarifa("Menos de 25",0.25));
+        tarifas.add(new Tarifa("Entre 25 min y 1 hora",0.5));
+        tarifas.add(new Tarifa("Entre 1 hora y 5 horas ",2.00));
+        tarifas.add(new Tarifa("Más de 5 horas",7.00));
        Parqueaderos.insertarInicio(new Parqueadero("A1",null));
        Parqueaderos.insertarInicio(new Parqueadero("A2",null));
        Parqueaderos.insertarInicio(new Parqueadero("A3",null));
@@ -49,7 +56,7 @@ public class _PyParqueadero {
        }*/
        while(!salir){
            
-       System.out.println("1.Ingresar al parqueadero\n"
+       System.out.println("1.Ingresar al parqueadero y ver tarifas\n"
                + "2.Atender\n"                
                 + "3.Ver numero de lugares lisponibles\n"
                 + "4.Ver que lugar esta disponible\n"
@@ -64,6 +71,14 @@ public class _PyParqueadero {
            int n = sc.nextInt();
         switch(n){
                 case 1:
+                    
+                    Iterator<Tarifa> it = tarifas.iterator();
+                    
+                    while(it.hasNext()){
+                        Tarifa t1=it.next();
+                        System.out.println(t1);
+                        
+                    }
                     ColaDeCarros.insertar(new Vehiculo("1", "2023", new Persona("Pepe", "1")));
                     ColaDeCarros.insertar(new Vehiculo("2", "2023", new Persona("Pepe", "2")));
                     ColaDeCarros.insertar(new Vehiculo("3", "2023", new Persona("Pepe", "3")));                    
