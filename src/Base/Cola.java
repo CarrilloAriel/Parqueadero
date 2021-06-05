@@ -29,15 +29,13 @@ public class Cola {
     //extrae al elemento
     public Vehiculo atender() throws Exception{
             if(esVacia()){
-                throw new Exception("Cola vacia");
+                throw new Exception("NO SE PUEDE ATENDER Cola vacia");
             }
-            NodoCola aux = inicio;
-            
+            NodoCola aux = inicio;            
             inicio = inicio.getSiguiente();//toma el valor que apunta al siguiente
             if(inicio==null){
-                fin=null;
-            }
-            
+                fin=inicio=null;
+            }            
             aux.setSiguiente(null);        
             return aux.getDato();              
     }
@@ -49,8 +47,7 @@ public class Cola {
         return inicio.getDato();
     }
     public boolean esVacia(){
-        return inicio == null && fin ==null;
-        //return true;
+        return inicio == null && fin ==null;        
     }
     
     public void imprimir(){
@@ -61,10 +58,8 @@ public class Cola {
             while(aux!=null){
                 System.out.println("ELEMENTOS: "+aux.getDato().toString());
                 aux = aux.getSiguiente();//ASI ES COMO NOS MOVEMOS ENTRE LOS NODOS
-            }
-            
-        }
-        
+            }            
+        }        
     }
     public int contar(){
         if(esVacia()){

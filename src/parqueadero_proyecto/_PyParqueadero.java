@@ -30,7 +30,7 @@ public class _PyParqueadero {
        Parqueaderos.insertarInicio(new Parqueadero("A3",null));
        Parqueaderos.insertarInicio(new Parqueadero("A4",null));
        Parqueaderos.insertarInicio(new Parqueadero("A5",null));
-       
+      /* 
        ColaDeCarros.insertar(new Vehiculo("1", "2023", new Persona("Pepe", "1")));
        ColaDeCarros.insertar(new Vehiculo("2", "2023", new Persona("Pepe", "1")));
        ColaDeCarros.insertar(new Vehiculo("3", "2023", new Persona("Pepe", "1")));
@@ -46,18 +46,20 @@ public class _PyParqueadero {
            
        }else{
            //System.out.println("No hay lugares");
-       }
+       }*/
        while(!salir){
            
        System.out.println("1.Ingresar al parqueadero\n"
-               + "2.Atender"                
+               + "2.Atender\n"                
                 + "3.Ver numero de lugares lisponibles\n"
                 + "4.Ver que lugar esta disponible\n"
                 + "5.Ver longitud de la cola\n"
                 + "6.Agregar parqueaderos\n"
                 + "7.Quitar parqueaderos\n"
-               + "8.Salir");
-        
+               + "8.Salir\n"
+               + "9.Ver cola de carros\n"
+               + "10.Desparquear");
+        //u///////
            System.out.println("Ingrese una opcion");
            int n = sc.nextInt();
         switch(n){
@@ -66,37 +68,46 @@ public class _PyParqueadero {
                     ColaDeCarros.insertar(new Vehiculo("2", "2023", new Persona("Pepe", "2")));
                     ColaDeCarros.insertar(new Vehiculo("3", "2023", new Persona("Pepe", "3")));                    
                     ColaDeCarros.insertar(new Vehiculo("4", "2023", new Persona("Pepe", "4")));
-                    ColaDeCarros.insertar(new Vehiculo("4", "2023", new Persona("Pepe", "4")));
-                    ColaDeCarros.insertar(new Vehiculo("4", "2023", new Persona("Pepe", "4")));
+                    ColaDeCarros.insertar(new Vehiculo("5", "2023", new Persona("Pepe", "4")));
+                    ColaDeCarros.insertar(new Vehiculo("6", "2023", new Persona("Pepe", "4")));
                 break;
                 case 2:
-                    
+                     if(Parqueaderos.hayDisponible() && ColaDeCarros.esVacia()==false){                      
+                        Parqueaderos.parquear(ColaDeCarros.atender()); 
+                         System.out.println("Se ha atendido un vehiculo");
+                    }else{
+                        System.out.println("No hay lugares para parquear");
+                    }
                 break;
                 case 3:
-                    System.out.println(Parqueaderos.contarLugaresDisponibles());
+                    System.out.println(Parqueaderos.contarLugaresDisponibles());                        
+                    
                 break;
                 case 4:
-                    Parqueaderos.verLugaresDisponibles();
+                    if(Parqueaderos.verLugaresDisponibles()==false){
+                        System.out.println("NO HAY LUGARES DISPONIBLES");
+                    }
                 break;
                 case 5:
+                    System.out.println(ColaDeCarros.contar());
                 break;
                 case 6:
                 break;
                 case 7:
+                break;
+                case 8:
                     salir = true;
+                break;
+                case 9:
+                    ColaDeCarros.imprimir();
+                break;
+                case 10:
+                    System.out.println(Parqueaderos.desparquear("1"));
+                    //da error al entrar cuando no hay carros
                 break;
                 
         }
         
-        
-        
-        //COLA DE ESPERA
-        
-        
-        
-        ColaDeCarros.atender();
-        
-        ////PRIMERO ENCOLAR PARQUEADEROS
        }
         
         
