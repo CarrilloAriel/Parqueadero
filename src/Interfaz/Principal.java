@@ -18,16 +18,16 @@ public class Principal extends javax.swing.JFrame {
      */
     
    
-    //PanelIngresarVehiculo panelingresarvehiculo;
+    PanelIngresarVehiculo panelingresarvehiculo;
     //PanelRetirarVehiculo panelretirarvehiculo;
     //PanelListarVehiculos panelListarVehiculos;
     public Principal() {
         
         initComponents();
         setSize(800,450);
-        //panelingresarvehiculo = new PanelIngresarVehiculo();
-        //panelingresarvehiculo.setBounds(300,0,473,400);
-        //add(panelingresarvehiculo);
+        panelingresarvehiculo = new PanelIngresarVehiculo();
+        panelingresarvehiculo.setBounds(300,0,473,400);
+        add(panelingresarvehiculo);
         //panelretirarvehiculo = new PanelRetirarVehiculo();
         //panelretirarvehiculo.setBounds(300,0,473,400);
         //add(panelretirarvehiculo);
