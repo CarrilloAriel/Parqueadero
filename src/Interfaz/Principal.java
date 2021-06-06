@@ -5,8 +5,14 @@
  */
 package Interfaz;
 
-
-
+import Base.Cola;
+import Base.Lista;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Scanner;
+import javax.swing.JOptionPane;
+import parqueadero_proyecto.*;
 /**
  *
  * @author Principal
@@ -36,10 +42,6 @@ public class Principal extends javax.swing.JFrame {
         //panelListarVehiculos.setBounds(350,0,1116,400);
         //add(panelListarVehiculos);
         //panelListarVehiculos.setVisible(false);
-
-        
-       
-        
         
     }
 
@@ -65,7 +67,6 @@ public class Principal extends javax.swing.JFrame {
         PanelMenu.setBackground(new java.awt.Color(102, 153, 209));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/Logo Parqueadero.png"))); // NOI18N
-        jLabel1.setText("jLabel1");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI Semilight", 0, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -174,7 +175,7 @@ public class Principal extends javax.swing.JFrame {
         setSize(800,450);
         //panelListarVehiculos.setVisible(false);
         //panelretirarvehiculo.setVisible(false);
-        //panelingresarvehiculo.setVisible(true);
+        panelingresarvehiculo.setVisible(true);
         
         revalidate();
         repaint();
@@ -184,7 +185,7 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         setSize(800,450);
         //panelListarVehiculos.setVisible(false);
-        //panelingresarvehiculo.setVisible(false);
+        panelingresarvehiculo.setVisible(false);
         //panelretirarvehiculo.setVisible(true);
          revalidate();
         repaint();
@@ -197,7 +198,7 @@ public class Principal extends javax.swing.JFrame {
         setSize(1116,450);
         //add(panelListarVehiculos);
         //panelListarVehiculos.setVisible(true);
-        //panelingresarvehiculo.setVisible(false);
+        panelingresarvehiculo.setVisible(false);
         //panelretirarvehiculo.setVisible(false);
          revalidate();
         repaint();
@@ -240,6 +241,18 @@ public class Principal extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Principal().setVisible(true);
+                // Inicio del programa principal
+        boolean salir = false;
+        Cola ColaDeCarros = new Cola();
+        Scanner sc = new Scanner(System.in);
+        Lista Parqueaderos = new Lista();
+        List <Tarifa> tarifas = new ArrayList<>();
+        tarifas.add(new Tarifa("Menos de 25",0.25));
+        tarifas.add(new Tarifa("Entre 25 min y 1 hora",0.5));
+        tarifas.add(new Tarifa("Entre 1 hora y 5 horas ",2.00));
+        tarifas.add(new Tarifa("Más de 5 horas",7.00));
+       
+       Iterator<Tarifa> it = tarifas.iterator();
             }
         });
     }
