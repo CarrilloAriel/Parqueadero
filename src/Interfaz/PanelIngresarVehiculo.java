@@ -24,6 +24,7 @@ import com.sun.javafx.geom.Rectangle;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -162,47 +163,56 @@ public class PanelIngresarVehiculo extends javax.swing.JPanel {
         }
 
         try {
-            
             DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             Calendar cal = Calendar.getInstance();
             Date date = cal.getTime();
             fechaHora = dateFormat.format(date);
             System.out.print(dateFormat.format(date));
-            String sql = "INSERT INTO vehiculos (placa, propietario,tipovehiculo,horaentrada,estado) VALUES ('" + tfPlaca.getText() + "','" + tfPropietario.getText() + "','" + clasevehiculo + "','" + fechaHora + "','Disponible')";
+            //(placa, propietario,tipovehiculo,horaentrada,estado
+            String sql = "" + tfPlaca.getText() + "','" + tfPropietario.getText() + "','" + clasevehiculo + "','" + fechaHora + "','Disponible')";
+            JOptionPane.showMessageDialog(null,sql);
+            //INICIO DE REGISTRO
             JOptionPane.showMessageDialog(null, "El vehiculo se registro exitosamente");
 
         } catch (InputMismatchException ex) {
                 JOptionPane.showMessageDialog(null,"Tiene que escribir correctamente los datos");
         }
-
         
-           String dest = "C:/reportes/sample.pdf"; 
+        String dest = "Recibo.pdf"; 
         try {
             
+
             PdfWriter writer = new PdfWriter(dest);
             PdfDocument pdfDoc = new PdfDocument(writer);
             Document document = new Document(pdfDoc, PageSize.A5);
-            pdfDoc.addNewPage(); 
-           
-            Paragraph para = new Paragraph ("Recibo Parqueadero"); 
+            pdfDoc.addNewPage();
+            
+            Paragraph para = new Paragraph ("Recibo Parqueadero");
             
             para.setBorder(Border.NO_BORDER);
+            
             para.setBold();
-             
-            Paragraph para1 = new Paragraph ("Placa vehiculo: "+tfPlaca.getText()); 
-            Paragraph para2 = new Paragraph ("Nombre del propietario: "+tfPropietario.getText()); 
+            Paragraph para1 = new Paragraph ("Placa vehiculo: "+tfPlaca.getText());
+            Paragraph para2 = new Paragraph ("Nombre del propietario: "+tfPropietario.getText());
             Paragraph para3 = new Paragraph ("Hora de ingreso: "+fechaHora); 
             
-            document.add(para); 
-            document.add(para1); 
-            document.add(para2); 
-            document.add(para3); 
-            document.close();
-             System.out.println("PDF Created");  
+            JOptionPane.showMessageDialog(null, "para");
             
+            document.add(para); 
+            JOptionPane.showMessageDialog(null, "fLAG1");
+            document.add(para1); 
+            JOptionPane.showMessageDialog(null, "fLAG2");
+            document.add(para2); 
+            JOptionPane.showMessageDialog(null, "fLAG3");
+            document.add(para3); 
+            
+            document.close();
+            System.out.println("PDF Created");
         } catch (FileNotFoundException ex) {
+            JOptionPane.showMessageDialog(null, "fLAG7.1");
             Logger.getLogger(PanelIngresarVehiculo.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
+            JOptionPane.showMessageDialog(null, "fLAG7.2");
             Logger.getLogger(PanelIngresarVehiculo.class.getName()).log(Level.SEVERE, null, ex);
         }
         
