@@ -25,14 +25,11 @@ import com.sun.javafx.geom.Rectangle;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.InputMismatchException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -50,13 +47,6 @@ public class PanelIngresarVehiculo extends javax.swing.JPanel {
      */
     public PanelIngresarVehiculo() {
         initComponents();
-
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(PanelIngresarVehiculo.class.getName()).log(Level.SEVERE, null, ex);
-
-        }
 
     }
     
@@ -172,19 +162,17 @@ public class PanelIngresarVehiculo extends javax.swing.JPanel {
         }
 
         try {
-            Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/bdparqueadero", "root", "");
+            
             DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             Calendar cal = Calendar.getInstance();
             Date date = cal.getTime();
             fechaHora = dateFormat.format(date);
             System.out.print(dateFormat.format(date));
-            Statement stat = conexion.createStatement();
             String sql = "INSERT INTO vehiculos (placa, propietario,tipovehiculo,horaentrada,estado) VALUES ('" + tfPlaca.getText() + "','" + tfPropietario.getText() + "','" + clasevehiculo + "','" + fechaHora + "','Disponible')";
-            stat.executeUpdate(sql);
             JOptionPane.showMessageDialog(null, "El vehiculo se registro exitosamente");
 
-        } catch (SQLException ex) {
-            Logger.getLogger(PanelIngresarVehiculo.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InputMismatchException ex) {
+                JOptionPane.showMessageDialog(null,"Tiene que escribir correctamente los datos");
         }
 
         
