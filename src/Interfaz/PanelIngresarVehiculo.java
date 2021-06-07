@@ -34,6 +34,7 @@ import java.util.InputMismatchException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import java.awt.Desktop;
 //import sun.text.normalizer.RangeValueIterator.Element;
 
 import java.io.PrintWriter;
@@ -178,6 +179,7 @@ public class PanelIngresarVehiculo extends javax.swing.JPanel {
    
     String fechaHora = "";
     String hora = "";
+    String fecha = "";
      public static final String DEST = "proyectoparqueadero/hello_world.pdf";
      
     private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
@@ -191,14 +193,23 @@ public class PanelIngresarVehiculo extends javax.swing.JPanel {
         }
 
         try {
+            //formato fecha+hora
             DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             Calendar cal = Calendar.getInstance();
             Date date = cal.getTime();
-            DateFormat dateForma = new SimpleDateFormat("HH.mm dd-MM-yyyy");
+            fechaHora = dateFormat.format(date);
+            
+            //formato hora
+            DateFormat dateForma = new SimpleDateFormat("HH.mm");
             Calendar ca = Calendar.getInstance();
             Date dat = ca.getTime();
-            fechaHora = dateFormat.format(dat);
             hora = dateForma.format(dat);
+            
+            //formato fecha
+            DateFormat dateForm = new SimpleDateFormat("dd-MM-yyyy");
+            Calendar c = Calendar.getInstance();
+            Date da = c.getTime();
+            fecha = dateForm.format(da);
             
             System.out.print("Ingreso en: "+dateFormat.format(date));
             //(placa, propietario,tipovehiculo,horaentrada,estado
@@ -211,26 +222,9 @@ public class PanelIngresarVehiculo extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(null,"Tiene que escribir correctamente los datos");
         }
         
-        //inicio creacion de txt
-        try {
-            String titulo = "Recibo"+hora+".txt";
-            PrintWriter writer = new PrintWriter(titulo,"UTF-8");
-            writer.println(fechaHora);
-            writer.println();
-            writer.println();
-            writer.println("Nombre: "+tfPropietario.getText());
-            writer.println("Apellido: "+tfPropietario1.getText());
-            writer.println();
-            writer.println("Placa: "+tfPlaca.getText());
-            writer.close();
-            
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(PanelIngresarVehiculo.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (UnsupportedEncodingException ex) {
-            Logger.getLogger(PanelIngresarVehiculo.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
        
-        //String dest = "Recibo.pdf";
+        
         
         try {
             Principal.ColaDeCarros.insertar(new Vehiculo(tfPlaca.getText(),clasevehiculo,new Persona(tfPropietario.getText(),tfPropietario1.getText())));
@@ -238,7 +232,7 @@ public class PanelIngresarVehiculo extends javax.swing.JPanel {
         }catch (Exception ex) {
             Logger.getLogger(PanelIngresarVehiculo.class.getName()).log(Level.SEVERE, null, ex);
         }  
-//        
+        
        if(Principal.Parqueaderos.hayDisponible() && Principal.ColaDeCarros.esVacia()==false){                      
             try { 
                 Principal.Parqueaderos.parquear(Principal.ColaDeCarros.atender());
@@ -246,11 +240,49 @@ public class PanelIngresarVehiculo extends javax.swing.JPanel {
                 Logger.getLogger(PanelIngresarVehiculo.class.getName()).log(Level.SEVERE, null, ex);
             }
                          System.out.println("Se ha atendido un vehiculo");
-                    }else{
-                        System.out.println("No hay lugares para parquear");
-                    }
+       }else{
+            System.out.println("No hay lugares para parquear");
+       }
+       //inicio creacion de txt
+       
+       String titulo = "Ticket "+tfPlaca.getText()+" "+hora+".txt";
+        try {
+            
+            PrintWriter writer = new PrintWriter(titulo,"UTF-8");
+            writer.println("                SECUREPARK");
+            writer.println();
+            writer.println("                   Ticket");
+            writer.println();
+            writer.println("Hora: "+hora+"        Fecha: "+fecha);
+            writer.println();
+            writer.println();
+            writer.println("Nombre: "+tfPropietario.getText());
+            writer.println("Apellido: "+tfPropietario1.getText());
+            writer.println();
+            writer.println(clasevehiculo);
+            writer.println("Placa: "+tfPlaca.getText());
+            writer.println();
+            writer.println();
+            writer.println("Por favor guarde este ticket");
+            writer.println("La multa por la perdida de este ticket es de 15 USD");
+            writer.close();
+            
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(PanelIngresarVehiculo.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (UnsupportedEncodingException ex) {
+            Logger.getLogger(PanelIngresarVehiculo.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        //Inicio para abrir archivo txt
+        try {
 
-        
+            File objetofile = new File (titulo);
+            Desktop.getDesktop().open(objetofile);
+
+     }catch (IOException ex) {
+
+            System.out.println(ex);
+
+     }
     }//GEN-LAST:event_button1ActionPerformed
 
     private void tfPropietarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfPropietarioActionPerformed
