@@ -19,7 +19,7 @@ public class Recibo {
         return HoraDeSalida;
     }
 
-    public void setHoraDeSalidar(Timer horaDeSalida) {
+    public void setHoraDeSalida(Timer horaDeSalida) {
         this.HoraDeSalida = horaDeSalida;
     }
 
@@ -37,10 +37,6 @@ public class Recibo {
 
     public String getRecibo() {
         return "";
-    }
-
-    public Vehiculo getVechiculo() {
-        return vehiculo;
     }
 
     public void setVehiculo(Vehiculo vehiculo) {
