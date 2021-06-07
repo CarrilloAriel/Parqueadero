@@ -36,6 +36,8 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import sun.text.normalizer.RangeValueIterator.Element;
 
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 
 /*
  *
@@ -71,6 +73,7 @@ public class PanelIngresarVehiculo extends javax.swing.JPanel {
         rbMoto = new javax.swing.JRadioButton();
         rbAuto = new javax.swing.JRadioButton();
         button1 = new java.awt.Button();
+        tfPropietario1 = new javax.swing.JTextField();
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Segoe UI Symbol", 0, 16)); // NOI18N
@@ -80,6 +83,13 @@ public class PanelIngresarVehiculo extends javax.swing.JPanel {
         tfPlaca.setFont(new java.awt.Font("Segoe UI Symbol", 1, 24)); // NOI18N
 
         tfPropietario.setFont(new java.awt.Font("Segoe UI Symbol", 0, 12)); // NOI18N
+        tfPropietario.setText("Nombre");
+        tfPropietario.setToolTipText("Nombre");
+        tfPropietario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfPropietarioActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Placa");
 
@@ -102,27 +112,41 @@ public class PanelIngresarVehiculo extends javax.swing.JPanel {
             }
         });
 
+        tfPropietario1.setFont(new java.awt.Font("Segoe UI Symbol", 0, 12)); // NOI18N
+        tfPropietario1.setText("Apellido");
+        tfPropietario1.setToolTipText("Nombre");
+        tfPropietario1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfPropietario1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(22, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
-                    .addComponent(tfPropietario, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tfPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
                     .addComponent(jLabel2)
                     .addComponent(jLabel1))
                 .addGap(61, 61, 61))
             .addGroup(layout.createSequentialGroup()
-                .addGap(154, 154, 154)
-                .addComponent(rbMoto)
-                .addGap(10, 10, 10)
-                .addComponent(rbAuto)
-                .addGap(137, 137, 137))
+                .addGap(83, 83, 83)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(rbMoto)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(rbAuto))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(tfPropietario, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(tfPropietario1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -136,7 +160,9 @@ public class PanelIngresarVehiculo extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(tfPropietario, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tfPropietario, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfPropietario1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
                 .addGap(18, 18, 18)
@@ -150,6 +176,7 @@ public class PanelIngresarVehiculo extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     String fechaHora = "";
+    String hora = "";
      public static final String DEST = "proyectoparqueadero/hello_world.pdf";
      
     private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
@@ -166,8 +193,13 @@ public class PanelIngresarVehiculo extends javax.swing.JPanel {
             DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             Calendar cal = Calendar.getInstance();
             Date date = cal.getTime();
-            fechaHora = dateFormat.format(date);
-            System.out.print(dateFormat.format(date));
+            DateFormat dateForma = new SimpleDateFormat("HH.mm dd-MM-yyyy");
+            Calendar ca = Calendar.getInstance();
+            Date dat = ca.getTime();
+            fechaHora = dateFormat.format(dat);
+            hora = dateForma.format(dat);
+            
+            System.out.print("Ingreso en: "+dateFormat.format(date));
             //(placa, propietario,tipovehiculo,horaentrada,estado
             String sql = "" + tfPlaca.getText() + "','" + tfPropietario.getText() + "','" + clasevehiculo + "','" + fechaHora + "','Disponible')";
             JOptionPane.showMessageDialog(null,sql);
@@ -178,69 +210,94 @@ public class PanelIngresarVehiculo extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(null,"Tiene que escribir correctamente los datos");
         }
         
-        String dest = "Recibo.pdf"; 
+        //inicio creacion de txt
         try {
+            String titulo = "Recibo"+hora+".txt";
+            PrintWriter writer = new PrintWriter(titulo,"UTF-8");
+            writer.println(fechaHora);
+            writer.println();
+            writer.println();
+            writer.println("Nombre: "+tfPropietario.getText());
+            writer.println("Apellido: "+tfPropietario1.getText());
+            writer.println();
+            writer.println("Placa: "+tfPlaca.getText());
+            writer.close();
             
-
-            PdfWriter writer = new PdfWriter(dest);
-            PdfDocument pdfDoc = new PdfDocument(writer);
-            Document document = new Document(pdfDoc, PageSize.A5);
-            pdfDoc.addNewPage();
-            
-            Paragraph para = new Paragraph ("Recibo Parqueadero");
-            
-            para.setBorder(Border.NO_BORDER);
-            
-            para.setBold();
-            Paragraph para1 = new Paragraph ("Placa vehiculo: "+tfPlaca.getText());
-            Paragraph para2 = new Paragraph ("Nombre del propietario: "+tfPropietario.getText());
-            Paragraph para3 = new Paragraph ("Hora de ingreso: "+fechaHora); 
-            
-            JOptionPane.showMessageDialog(null, "para");
-            
-            document.add(para); 
-            JOptionPane.showMessageDialog(null, "fLAG1");
-            document.add(para1); 
-            JOptionPane.showMessageDialog(null, "fLAG2");
-            document.add(para2); 
-            JOptionPane.showMessageDialog(null, "fLAG3");
-            document.add(para3); 
-            
-            document.close();
-            System.out.println("PDF Created");
         } catch (FileNotFoundException ex) {
-            JOptionPane.showMessageDialog(null, "fLAG7.1");
             Logger.getLogger(PanelIngresarVehiculo.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            JOptionPane.showMessageDialog(null, "fLAG7.2");
+        } catch (UnsupportedEncodingException ex) {
             Logger.getLogger(PanelIngresarVehiculo.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        try {
-
-		if ((new File("c:\\reportes/sample.pdf")).exists()) {
-
-			Process p = Runtime
-			   .getRuntime()
-			   .exec("rundll32 url.dll,FileProtocolHandler c:\\reportes/sample.pdf");
-			p.waitFor();
-				
-		} else {
-
-			System.out.println("File is not exists");
-
-		}
-
-		System.out.println("Done");
-
-  	  } catch (Exception ex) {
-		ex.printStackTrace();
-	  }
-           
-            
+        String dest = "Recibo.pdf";
+//        try {
+//
+//
+//            PdfWriter writer = new PdfWriter(dest);
+//            PdfDocument pdfDoc = new PdfDocument(writer);
+//            Document document = new Document(pdfDoc, PageSize.A5);
+//            pdfDoc.addNewPage();
+//            
+//            Paragraph para = new Paragraph ("Recibo Parqueadero");
+//            
+//            para.setBorder(Border.NO_BORDER);
+//            
+//            para.setBold();
+//            Paragraph para1 = new Paragraph ("Placa vehiculo: "+tfPlaca.getText());
+//            Paragraph para2 = new Paragraph ("Nombre del propietario: "+tfPropietario.getText());
+//            Paragraph para3 = new Paragraph ("Hora de ingreso: "+fechaHora);
+//            
+//            JOptionPane.showMessageDialog(null, "para");
+//
+//            document.add(para); 
+//            JOptionPane.showMessageDialog(null, "fLAG1");
+//            document.add(para1); 
+//            JOptionPane.showMessageDialog(null, "fLAG2");
+//            document.add(para2); 
+//            JOptionPane.showMessageDialog(null, "fLAG3");
+//            document.add(para3);
+//            
+//            document.close();
+//            System.out.println("PDF Created");
+//        } catch (FileNotFoundException ex) {
+//            JOptionPane.showMessageDialog(null, "fLAG7.1");
+//            Logger.getLogger(PanelIngresarVehiculo.class.getName()).log(Level.SEVERE, null, ex);
+//        } catch (IOException ex) {
+//            JOptionPane.showMessageDialog(null, "fLAG7.2");
+//            Logger.getLogger(PanelIngresarVehiculo.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        
+//        try {
+//
+//		if ((new File("sample.pdf")).exists()) {
+//
+//			Process p = Runtime
+//			   .getRuntime()
+//			   .exec("rundll32 url.dll,FileProtocolHandler c:\\reportes/sample.pdf");
+//			p.waitFor();
+//				
+//		} else {
+//
+//			System.out.println("File is not exists");
+//
+//		}
+//
+//		System.out.println("Done");
+//
+//  	  } catch (Exception ex) {
+//		ex.printStackTrace();
+//	  }
 
         
     }//GEN-LAST:event_button1ActionPerformed
+
+    private void tfPropietarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfPropietarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfPropietarioActionPerformed
+
+    private void tfPropietario1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfPropietario1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfPropietario1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -254,5 +311,6 @@ public class PanelIngresarVehiculo extends javax.swing.JPanel {
     private javax.swing.JRadioButton rbMoto;
     private javax.swing.JTextField tfPlaca;
     private javax.swing.JTextField tfPropietario;
+    private javax.swing.JTextField tfPropietario1;
     // End of variables declaration//GEN-END:variables
 }

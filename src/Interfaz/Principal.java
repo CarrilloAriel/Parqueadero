@@ -251,7 +251,9 @@ public class Principal extends javax.swing.JFrame {
         tarifas.add(new Tarifa("Entre 25 min y 1 hora",0.5));
         tarifas.add(new Tarifa("Entre 1 hora y 5 horas ",2.00));
         tarifas.add(new Tarifa("Más de 5 horas",7.00));
-       
+        
+        
+        JOptionPane.showMessageDialog(null, tarifas);
        Iterator<Tarifa> it = tarifas.iterator();
             }
         });

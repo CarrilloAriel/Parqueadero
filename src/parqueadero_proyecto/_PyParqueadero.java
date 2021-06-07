@@ -32,6 +32,9 @@ public class _PyParqueadero {
         tarifas.add(new Tarifa("Entre 25 min y 1 hora",0.5));
         tarifas.add(new Tarifa("Entre 1 hora y 5 horas ",2.00));
         tarifas.add(new Tarifa("Más de 5 horas",7.00));
+       
+       Iterator<Tarifa> it = tarifas.iterator();
+       
        Parqueaderos.insertarInicio(new Parqueadero("A1",null));
        Parqueaderos.insertarInicio(new Parqueadero("A2",null));
        Parqueaderos.insertarInicio(new Parqueadero("A3",null));
@@ -72,7 +75,7 @@ public class _PyParqueadero {
         switch(n){
                 case 1:
                     
-                    Iterator<Tarifa> it = tarifas.iterator();
+                    
                     
                     while(it.hasNext()){
                         Tarifa t1=it.next();
