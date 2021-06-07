@@ -62,13 +62,14 @@ public class _PyParqueadero {
        System.out.println("1.Ingresar al parqueadero y ver tarifas\n"
                + "2.Atender\n"                
                 + "3.Ver numero de lugares lisponibles\n"
-                + "4.Ver que lugar esta disponible\n"
-                + "5.Ver longitud de la cola\n"
-                + "6.Agregar parqueaderos\n"
-                + "7.Quitar parqueaderos\n"
-               + "8.Salir\n"
-               + "9.Ver cola de carros\n"
-               + "10.Desparquear");
+                +"4.Ver numero de lugares ocupados\n"
+                + "5.Ver que lugar esta disponible\n"
+                + "6.Ver longitud de la cola\n"
+                + "7.Agregar parqueaderos\n"
+                + "8.Quitar parqueaderos\n"
+               + "9.Salir\n"
+               + "10.Ver cola de carros\n"
+               + "11.Desparquear");
         //u///////
            System.out.println("Ingrese una opcion");
            int n = sc.nextInt();
@@ -102,24 +103,28 @@ public class _PyParqueadero {
                     
                 break;
                 case 4:
+                    System.out.println(Parqueaderos.contarPlazasOcupasas());                        
+                    
+                break;
+                case 5:
                     if(Parqueaderos.verLugaresDisponibles()==false){
                         System.out.println("NO HAY LUGARES DISPONIBLES");
                     }
                 break;
-                case 5:
-                    System.out.println(ColaDeCarros.contar());
-                break;
                 case 6:
+                    System.out.println(ColaDeCarros.contar());
                 break;
                 case 7:
                 break;
                 case 8:
-                    salir = true;
                 break;
                 case 9:
-                    ColaDeCarros.imprimir();
+                    salir = true;
                 break;
                 case 10:
+                    ColaDeCarros.imprimir();
+                break;
+                case 11:
                     System.out.println(Parqueaderos.desparquear("1"));
                     //da error al entrar cuando no hay carros
                 break;

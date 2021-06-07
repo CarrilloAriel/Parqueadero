@@ -187,6 +187,9 @@ public class Lista {
         }
         return cont;
     }
+    public int contarPlazasOcupasas(){
+        return contar()-contarLugaresDisponibles();
+    }
     public boolean hayDisponible(){
         
         NodoLista aux = inicio;        
