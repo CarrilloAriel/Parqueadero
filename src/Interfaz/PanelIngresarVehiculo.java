@@ -34,7 +34,7 @@ import java.util.InputMismatchException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import sun.text.normalizer.RangeValueIterator.Element;
+//import sun.text.normalizer.RangeValueIterator.Element;
 
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;

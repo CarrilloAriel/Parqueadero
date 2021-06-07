@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import parqueadero_proyecto.*;
 /**
@@ -23,7 +25,9 @@ public class Principal extends javax.swing.JFrame {
      * Creates new form Principal
      */
     
-   
+    static Cola ColaDeCarros = new Cola();
+    static Lista Parqueaderos = new Lista();
+    
     PanelIngresarVehiculo panelingresarvehiculo;
     //PanelRetirarVehiculo panelretirarvehiculo;
     //PanelListarVehiculos panelListarVehiculos;
@@ -61,6 +65,7 @@ public class Principal extends javax.swing.JFrame {
         button2 = new java.awt.Button();
         button3 = new java.awt.Button();
         button4 = new java.awt.Button();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -112,6 +117,13 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout PanelMenuLayout = new javax.swing.GroupLayout(PanelMenu);
         PanelMenu.setLayout(PanelMenuLayout);
         PanelMenuLayout.setHorizontalGroup(
@@ -135,6 +147,10 @@ public class Principal extends javax.swing.JFrame {
                             .addComponent(button2, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(button4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(27, Short.MAX_VALUE))
+            .addGroup(PanelMenuLayout.createSequentialGroup()
+                .addGap(112, 112, 112)
+                .addComponent(jButton1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         PanelMenuLayout.setVerticalGroup(
             PanelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -151,7 +167,9 @@ public class Principal extends javax.swing.JFrame {
                 .addGroup(PanelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(button3, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(button4, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1)
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -209,6 +227,13 @@ public class Principal extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_button4ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        Administracion p = new Administracion();
+        p.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -243,9 +268,23 @@ public class Principal extends javax.swing.JFrame {
                 new Principal().setVisible(true);
                 // Inicio del programa principal
         boolean salir = false;
-        Cola ColaDeCarros = new Cola();
+       // Cola ColaDeCarros = new Cola();
+        
         Scanner sc = new Scanner(System.in);
-        Lista Parqueaderos = new Lista();
+        //Lista Parqueaderos = new Lista();
+       Parqueaderos.insertarInicio(new Parqueadero("A1",null));
+       Parqueaderos.insertarInicio(new Parqueadero("A2",null));
+       Parqueaderos.insertarInicio(new Parqueadero("A3",null));
+       Parqueaderos.insertarInicio(new Parqueadero("A4",null));
+       Parqueaderos.insertarInicio(new Parqueadero("A5",null));
+                try {
+                    ColaDeCarros.insertar(new Vehiculo("1", "2023", new Persona("Pepe", "1")));
+                    Parqueaderos.parquear(ColaDeCarros.atender()); 
+                } catch (Exception ex) {
+                    Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+       
         List <Tarifa> tarifas = new ArrayList<>();
         tarifas.add(new Tarifa("Menos de 25",0.25));
         tarifas.add(new Tarifa("Entre 25 min y 1 hora",0.5));
@@ -265,6 +304,7 @@ public class Principal extends javax.swing.JFrame {
     private java.awt.Button button2;
     private java.awt.Button button3;
     private java.awt.Button button4;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
