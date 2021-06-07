@@ -107,9 +107,9 @@ public class _PyParqueadero {
                     
                 break;
                 case 5:
-                    if(Parqueaderos.verLugaresDisponibles()==false){
+                   /* if(Parqueaderos.verLugaresDisponibles()==false){
                         System.out.println("NO HAY LUGARES DISPONIBLES");
-                    }
+                    }*/
                 break;
                 case 6:
                     System.out.println(ColaDeCarros.contar());

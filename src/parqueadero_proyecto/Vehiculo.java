@@ -6,7 +6,10 @@ public class Vehiculo {
     private String tipo;    
     private Timer horaEntrada;
     private Timer horaSalida;
-
+    
+    public Vehiculo(){
+        
+    }
     public Vehiculo(String placa, String tipo,Persona persona) {        
         this.placa = placa;
         this.tipo = tipo;

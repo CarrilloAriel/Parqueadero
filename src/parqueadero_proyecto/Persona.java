@@ -7,7 +7,8 @@ public class Persona {
     private String Apellido;   
     private Vehiculo vehiculo;
     private Timer HoraEntrada;
-
+    
+     
     public Persona(String Nombre, String Apellido) {
         this.Nombre = Nombre;
         this.Apellido = Apellido;

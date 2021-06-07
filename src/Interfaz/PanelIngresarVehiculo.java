@@ -38,6 +38,7 @@ import javax.swing.JOptionPane;
 
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
+import parqueadero_proyecto.*;
 
 /*
  *
@@ -174,7 +175,7 @@ public class PanelIngresarVehiculo extends javax.swing.JPanel {
                 .addGap(26, 26, 26))
         );
     }// </editor-fold>//GEN-END:initComponents
-
+   
     String fechaHora = "";
     String hora = "";
      public static final String DEST = "proyectoparqueadero/hello_world.pdf";
@@ -228,65 +229,26 @@ public class PanelIngresarVehiculo extends javax.swing.JPanel {
         } catch (UnsupportedEncodingException ex) {
             Logger.getLogger(PanelIngresarVehiculo.class.getName()).log(Level.SEVERE, null, ex);
         }
+       
+        //String dest = "Recibo.pdf";
         
-        String dest = "Recibo.pdf";
-//        try {
-//
-//
-//            PdfWriter writer = new PdfWriter(dest);
-//            PdfDocument pdfDoc = new PdfDocument(writer);
-//            Document document = new Document(pdfDoc, PageSize.A5);
-//            pdfDoc.addNewPage();
-//            
-//            Paragraph para = new Paragraph ("Recibo Parqueadero");
-//            
-//            para.setBorder(Border.NO_BORDER);
-//            
-//            para.setBold();
-//            Paragraph para1 = new Paragraph ("Placa vehiculo: "+tfPlaca.getText());
-//            Paragraph para2 = new Paragraph ("Nombre del propietario: "+tfPropietario.getText());
-//            Paragraph para3 = new Paragraph ("Hora de ingreso: "+fechaHora);
-//            
-//            JOptionPane.showMessageDialog(null, "para");
-//
-//            document.add(para); 
-//            JOptionPane.showMessageDialog(null, "fLAG1");
-//            document.add(para1); 
-//            JOptionPane.showMessageDialog(null, "fLAG2");
-//            document.add(para2); 
-//            JOptionPane.showMessageDialog(null, "fLAG3");
-//            document.add(para3);
-//            
-//            document.close();
-//            System.out.println("PDF Created");
-//        } catch (FileNotFoundException ex) {
-//            JOptionPane.showMessageDialog(null, "fLAG7.1");
-//            Logger.getLogger(PanelIngresarVehiculo.class.getName()).log(Level.SEVERE, null, ex);
-//        } catch (IOException ex) {
-//            JOptionPane.showMessageDialog(null, "fLAG7.2");
-//            Logger.getLogger(PanelIngresarVehiculo.class.getName()).log(Level.SEVERE, null, ex);
-//        }
+        try {
+            Principal.ColaDeCarros.insertar(new Vehiculo(tfPlaca.getText(),clasevehiculo,new Persona(tfPropietario.getText(),tfPropietario1.getText())));
+              JOptionPane.showMessageDialog(null, "El vehiculo entro a la cola");
+        }catch (Exception ex) {
+            Logger.getLogger(PanelIngresarVehiculo.class.getName()).log(Level.SEVERE, null, ex);
+        }  
 //        
-//        try {
-//
-//		if ((new File("sample.pdf")).exists()) {
-//
-//			Process p = Runtime
-//			   .getRuntime()
-//			   .exec("rundll32 url.dll,FileProtocolHandler c:\\reportes/sample.pdf");
-//			p.waitFor();
-//				
-//		} else {
-//
-//			System.out.println("File is not exists");
-//
-//		}
-//
-//		System.out.println("Done");
-//
-//  	  } catch (Exception ex) {
-//		ex.printStackTrace();
-//	  }
+       if(Principal.Parqueaderos.hayDisponible() && Principal.ColaDeCarros.esVacia()==false){                      
+            try { 
+                Principal.Parqueaderos.parquear(Principal.ColaDeCarros.atender());
+            } catch (Exception ex) {
+                Logger.getLogger(PanelIngresarVehiculo.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                         System.out.println("Se ha atendido un vehiculo");
+                    }else{
+                        System.out.println("No hay lugares para parquear");
+                    }
 
         
     }//GEN-LAST:event_button1ActionPerformed

@@ -27,14 +27,15 @@ public class Principal extends javax.swing.JFrame {
     
     static Cola ColaDeCarros = new Cola();
     static Lista Parqueaderos = new Lista();
-    
+   
     PanelIngresarVehiculo panelingresarvehiculo;
     //PanelRetirarVehiculo panelretirarvehiculo;
     //PanelListarVehiculos panelListarVehiculos;
     public Principal() {
-        
+        setResizable(false);
         initComponents();
-        setSize(800,450);
+        setLocationRelativeTo(null);
+        setSize(800,500);
         panelingresarvehiculo = new PanelIngresarVehiculo();
         panelingresarvehiculo.setBounds(300,0,473,400);
         add(panelingresarvehiculo);
@@ -190,7 +191,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
         // TODO add your handling code here:
-        setSize(800,450);
+       // setSize(800,450);
         //panelListarVehiculos.setVisible(false);
         //panelretirarvehiculo.setVisible(false);
         panelingresarvehiculo.setVisible(true);
@@ -201,7 +202,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void button2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2ActionPerformed
         // TODO add your handling code here:
-        setSize(800,450);
+        //setSize(800,450);
         //panelListarVehiculos.setVisible(false);
         panelingresarvehiculo.setVisible(false);
         //panelretirarvehiculo.setVisible(true);

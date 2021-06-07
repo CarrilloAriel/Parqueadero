@@ -201,16 +201,15 @@ public class Lista {
         }
         return false;
     }
-    public boolean verLugaresDisponibles(){
+    public String verLugaresDisponibles(){
         NodoLista aux = inicio;
-        boolean x= false;      
+        String s= "";      
         while(aux!=null){
-            if(aux.getDato().getCarro()==null){
-                System.out.println(aux.getDato().getNumeroLugar()+" esta disponible");   
-                x=true;
+            if(aux.getDato().getCarro()==null){  
+                s=s+aux.getDato().getNumeroLugar()+"\n";
             }            
             aux = aux.getSiguiente();
         }
-        return x;
+        return s;
     }
 }
