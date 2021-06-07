@@ -7,8 +7,8 @@ public class Persona {
     private String Apellido;   
     private Vehiculo vehiculo;
     private Timer HoraEntrada;
-    
-     
+    private Date Fecha;
+
     public Persona(String Nombre, String Apellido) {
         this.Nombre = Nombre;
         this.Apellido = Apellido;
@@ -45,14 +45,7 @@ public class Persona {
     public void setHoraEntrada(Timer HoraEntrada) {
         this.HoraEntrada = HoraEntrada;
     }
-
-    public void setTarifa(String[] Tarifa) {
-    }
-
-    public Tarifa[] getTarifa() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
+    
     @Override
     public String toString() {
         return "Persona{" + "Nombre=" + Nombre + ", Apellido=" + Apellido + ", vehiculo=" + vehiculo + ", HoraEntrada=" + HoraEntrada + '}';
