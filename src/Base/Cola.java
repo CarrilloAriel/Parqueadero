@@ -74,26 +74,18 @@ public class Cola {
         return cont;
     }
     
-    public void busqueda(String placa){
-        if(esVacia()){
-            System.out.println("No hay elementos");
-        }else{
-            NodoCola aux = inicio;
-            Cola coincidencia = new Cola();
-            for(int i=0;i<contar();i++){
-                if(placa.compareToIgnoreCase(aux.getDato().getPlaca())==0){
-                   // coincidencia.insertar(aux.getDato());
+    
+    public boolean buscarPlacaCola(String placa){
+        NodoCola aux = inicio;
+        boolean flag=false;
+            while(aux!=null ){
+                if( aux.getDato().getPlaca().compareToIgnoreCase(placa)==0){
+                    flag=true;
+                    return flag;
                 }
                 aux = aux.getSiguiente();
             }
-            if(coincidencia.esVacia()){
-                System.out.println("Sin coincidencias en la busqueda");
-            }else{
-                System.out.println("COINCIDENCIAS ENCONTRADAS: ");
-                coincidencia.imprimir();
-            }
-            
-        }
+        return flag;
     }
     
     

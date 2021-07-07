@@ -2,14 +2,14 @@
 
                    Ticket
 
-Hora: 23.37        Fecha: 05-07-2021
+Hora: 21.09        Fecha: 06-07-2021
 
 
 Nombre: Nombre
 Apellido: Apellido
 
-Motocicleta
-Placa: m2
+Automovil
+Placa: m3
 
 
 Por favor guarde este ticket

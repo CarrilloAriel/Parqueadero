@@ -218,9 +218,9 @@ public class PanelIngresarVehiculo extends javax.swing.JPanel {
             System.out.print("Ingreso en: "+dateFormat.format(date));
             //(placa, propietario,tipovehiculo,horaentrada,estado
             String sql = "" + tfPlaca.getText() + "','" + tfPropietario.getText() + "','" + clasevehiculo + "','" + fechaHora + "','Disponible')";
-            JOptionPane.showMessageDialog(null,sql);
+            //JOptionPane.showMessageDialog(null,sql);
             //INICIO DE REGISTRO
-            JOptionPane.showMessageDialog(null, "El vehiculo se registro exitosamente");
+           
 
         } catch (InputMismatchException ex) {
                 JOptionPane.showMessageDialog(null,"Tiene que escribir correctamente los datos");
@@ -239,23 +239,33 @@ public class PanelIngresarVehiculo extends javax.swing.JPanel {
             Calendar c = Calendar.getInstance();
             Date fechaEntrada = c.getTime();
             fecha = dateForm.format(fechaEntrada);
+            if(Principal.Parqueaderos.buscarPlaca(tfPlaca.getText())){
+                JOptionPane.showMessageDialog(null, "El vehiculo se encuentra actualmente parqueado en el parqueadero");
+            }else if(Principal.ColaDeCarros.buscarPlacaCola(tfPlaca.getText())){
+                JOptionPane.showMessageDialog(null, "El vehiculo se encuentra actualmente en la cola de espera");
+            }else{
+                Principal.ColaDeCarros.insertar(new Vehiculo(tfPlaca.getText(),clasevehiculo,horaEntrada,new Persona(tfPropietario.getText(),tfPropietario1.getText())));
+                JOptionPane.showMessageDialog(null, "El vehiculo se registro exitosamente");
+                if(Principal.Parqueaderos.hayDisponible() && Principal.ColaDeCarros.esVacia()==false){                      
+                    try { 
+                        Principal.Parqueaderos.parquear(Principal.ColaDeCarros.atender());
+                    } catch (Exception ex) {
+                        Logger.getLogger(PanelIngresarVehiculo.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                                 System.out.println("Se ha atendido un vehiculo");
+               }else{
+                    System.out.println("No hay lugares para parquear");
+               }
+                
+            }
+           
             //Principal.ColaDeCarros.insertar(new Vehiculo(tfPlaca.getText(),clasevehiculo,new Persona(tfPropietario.getText(),tfPropietario1.getText(),hora,fechaEntrada)));
-            Principal.ColaDeCarros.insertar(new Vehiculo(tfPlaca.getText(),clasevehiculo,horaEntrada,new Persona(tfPropietario.getText(),tfPropietario1.getText())));
-            JOptionPane.showMessageDialog(null, "El vehiculo entro a la cola");
+            
         }catch (Exception ex) {
             Logger.getLogger(PanelIngresarVehiculo.class.getName()).log(Level.SEVERE, null, ex);
         }  
         
-       if(Principal.Parqueaderos.hayDisponible() && Principal.ColaDeCarros.esVacia()==false){                      
-            try { 
-                Principal.Parqueaderos.parquear(Principal.ColaDeCarros.atender());
-            } catch (Exception ex) {
-                Logger.getLogger(PanelIngresarVehiculo.class.getName()).log(Level.SEVERE, null, ex);
-            }
-                         System.out.println("Se ha atendido un vehiculo");
-       }else{
-            System.out.println("No hay lugares para parquear");
-       }
+       
        //inicio creacion de txt
        
        String titulo = "Ticket "+tfPlaca.getText()+" "+hora+".txt";
