@@ -189,6 +189,18 @@ public class PanelRetirarVehiculo extends javax.swing.JFrame {
             vp.setText(String.valueOf(Principal.Parqueaderos.valorPagar(Rplaca.getText(),min)));
             Principal.Parqueaderos.desparquear(Rplaca.getText());
             JOptionPane.showMessageDialog(null, "El vehiculo se retiro exitosamente");
+            
+            if(Principal.Parqueaderos.hayDisponible() && Principal.ColaDeCarros.esVacia()==false){                      
+                    try { 
+                        Principal.Parqueaderos.parquear(Principal.ColaDeCarros.atender());
+                        System.out.println("Se ha atendido un vehiculo");
+                    } catch (Exception ex) {
+                        Logger.getLogger(PanelIngresarVehiculo.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                                 
+            }
+            
+            
           
         }else{
             JOptionPane.showMessageDialog(null, "No se encontró el vehículo");

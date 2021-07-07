@@ -61,6 +61,17 @@ public class Cola {
             }            
         }        
     }
+    public String verCarrosEspera(){
+        NodoCola aux = inicio;
+        String s= "";      
+        while(aux!=null){
+             
+            s=s+aux.getDato().getPlaca()+"\n";
+                      
+            aux = aux.getSiguiente();
+        }
+        return s;
+    }
     public int contar(){
         if(esVacia()){
             return 0;

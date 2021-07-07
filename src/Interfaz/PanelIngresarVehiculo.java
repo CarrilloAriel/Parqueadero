@@ -187,15 +187,9 @@ public class PanelIngresarVehiculo extends javax.swing.JPanel {
      
     private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
 
-        String clasevehiculo = "";
-        if (rbAuto.isSelected()) {
-            clasevehiculo = "Automovil";
-        }
-        if (rbMoto.isSelected()) {
-            clasevehiculo = "Motocicleta";
-        }
+        
 
-        try {
+       /* try {
             //formato fecha+hora
             DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             Calendar cal = Calendar.getInstance();
@@ -203,17 +197,17 @@ public class PanelIngresarVehiculo extends javax.swing.JPanel {
             fechaHora = dateFormat.format(date);
             //fechaHora = dateFormat.format(date);
             
-            /*//formato hora
+            /formato hora
             DateFormat dateForma = new SimpleDateFormat("HH.mm");
             Calendar ca = Calendar.getInstance();
             Date dat = ca.getTime();
-            hora = dateForma.format(dat);*/
+            hora = dateForma.format(dat);
             
             //formato fecha
             /*DateFormat dateForm = new SimpleDateFormat("dd-MM-yyyy");
             Calendar c = Calendar.getInstance();
             Date da = c.getTime();
-            fecha = dateForm.format(da);*/
+            fecha = dateForm.format(da);
             
             System.out.print("Ingreso en: "+dateFormat.format(date));
             //(placa, propietario,tipovehiculo,horaentrada,estado
@@ -224,26 +218,39 @@ public class PanelIngresarVehiculo extends javax.swing.JPanel {
 
         } catch (InputMismatchException ex) {
                 JOptionPane.showMessageDialog(null,"Tiene que escribir correctamente los datos");
-        }
- 
+        }*/
+         
           
        
         try {
-               //Hora de entrada
-            DateFormat dateForma = new SimpleDateFormat("HH.mm");
-            Calendar ca = Calendar.getInstance();
-            Date horaEntrada = ca.getTime();
-            hora = dateForma.format(horaEntrada);
-         //Fecha de entrada
-            DateFormat dateForm = new SimpleDateFormat("dd-MM-yyyy");
-            Calendar c = Calendar.getInstance();
-            Date fechaEntrada = c.getTime();
-            fecha = dateForm.format(fechaEntrada);
-            if(Principal.Parqueaderos.buscarPlaca(tfPlaca.getText())){
-                JOptionPane.showMessageDialog(null, "El vehiculo se encuentra actualmente parqueado en el parqueadero");
-            }else if(Principal.ColaDeCarros.buscarPlacaCola(tfPlaca.getText())){
-                JOptionPane.showMessageDialog(null, "El vehiculo se encuentra actualmente en la cola de espera");
+           
+            if(Principal.Parqueaderos.buscarPlaca(tfPlaca.getText()) || Principal.ColaDeCarros.buscarPlacaCola(tfPlaca.getText())){
+                
+                if(Principal.Parqueaderos.buscarPlaca(tfPlaca.getText())){
+                    JOptionPane.showMessageDialog(null, "El vehiculo se encuentra actualmente parqueado en el parqueadero");
+                }else{
+                    JOptionPane.showMessageDialog(null, "El vehiculo se encuentra actualmente en la cola de espera");
+                }
+                
             }else{
+                String clasevehiculo = "";
+                if (rbAuto.isSelected()) {
+                    clasevehiculo = "Automovil";
+                }
+                if (rbMoto.isSelected()) {
+                    clasevehiculo = "Motocicleta";
+                }
+                 //Hora de entrada
+                DateFormat dateForma = new SimpleDateFormat("HH.mm");
+                Calendar ca = Calendar.getInstance();
+                Date horaEntrada = ca.getTime();
+                hora = dateForma.format(horaEntrada);
+             //Fecha de entrada
+                DateFormat dateForm = new SimpleDateFormat("dd-MM-yyyy");
+                Calendar c = Calendar.getInstance();
+                Date fechaEntrada = c.getTime();
+                fecha = dateForm.format(fechaEntrada);
+                
                 Principal.ColaDeCarros.insertar(new Vehiculo(tfPlaca.getText(),clasevehiculo,horaEntrada,new Persona(tfPropietario.getText(),tfPropietario1.getText())));
                 JOptionPane.showMessageDialog(null, "El vehiculo se registro exitosamente");
                 if(Principal.Parqueaderos.hayDisponible() && Principal.ColaDeCarros.esVacia()==false){                      
@@ -253,9 +260,50 @@ public class PanelIngresarVehiculo extends javax.swing.JPanel {
                         Logger.getLogger(PanelIngresarVehiculo.class.getName()).log(Level.SEVERE, null, ex);
                     }
                                  System.out.println("Se ha atendido un vehiculo");
-               }else{
+                }else{
                     System.out.println("No hay lugares para parquear");
-               }
+                }
+                
+                //inicio creacion de txt
+       
+                String titulo = "Ticket "+tfPlaca.getText()+" "+hora+".txt";
+                 try {
+
+                     PrintWriter writer = new PrintWriter(titulo,"UTF-8");
+                     writer.println("                SECUREPARK");
+                     writer.println();
+                     writer.println("                   Ticket");
+                     writer.println();
+                     writer.println("Hora: "+hora+"        Fecha: "+fecha);
+                     writer.println();
+                     writer.println();
+                     writer.println("Nombre: "+tfPropietario.getText());
+                     writer.println("Apellido: "+tfPropietario1.getText());
+                     writer.println();
+                     writer.println(clasevehiculo);
+                     writer.println("Placa: "+tfPlaca.getText());
+                     writer.println();
+                     writer.println();
+                     writer.println("Por favor guarde este ticket");
+                     writer.println("La multa por la perdida de este ticket es de 15 USD");
+                     writer.close();
+
+                 } catch (FileNotFoundException ex) {
+                     Logger.getLogger(PanelIngresarVehiculo.class.getName()).log(Level.SEVERE, null, ex);
+                 } catch (UnsupportedEncodingException ex) {
+                     Logger.getLogger(PanelIngresarVehiculo.class.getName()).log(Level.SEVERE, null, ex);
+                 }
+                 //Inicio para abrir archivo txt
+                 try {
+
+                     File objetofile = new File (titulo);
+                     Desktop.getDesktop().open(objetofile);
+
+                  }catch (IOException ex) {
+
+                     System.out.println(ex);
+
+                 }
                 
             }
            
@@ -266,46 +314,7 @@ public class PanelIngresarVehiculo extends javax.swing.JPanel {
         }  
         
        
-       //inicio creacion de txt
        
-       String titulo = "Ticket "+tfPlaca.getText()+" "+hora+".txt";
-        try {
-            
-            PrintWriter writer = new PrintWriter(titulo,"UTF-8");
-            writer.println("                SECUREPARK");
-            writer.println();
-            writer.println("                   Ticket");
-            writer.println();
-            writer.println("Hora: "+hora+"        Fecha: "+fecha);
-            writer.println();
-            writer.println();
-            writer.println("Nombre: "+tfPropietario.getText());
-            writer.println("Apellido: "+tfPropietario1.getText());
-            writer.println();
-            writer.println(clasevehiculo);
-            writer.println("Placa: "+tfPlaca.getText());
-            writer.println();
-            writer.println();
-            writer.println("Por favor guarde este ticket");
-            writer.println("La multa por la perdida de este ticket es de 15 USD");
-            writer.close();
-            
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(PanelIngresarVehiculo.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (UnsupportedEncodingException ex) {
-            Logger.getLogger(PanelIngresarVehiculo.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        //Inicio para abrir archivo txt
-        try {
-
-            File objetofile = new File (titulo);
-            Desktop.getDesktop().open(objetofile);
-
-     }catch (IOException ex) {
-
-            System.out.println(ex);
-
-     }
     }//GEN-LAST:event_button1ActionPerformed
 
     private void tfPropietarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfPropietarioActionPerformed

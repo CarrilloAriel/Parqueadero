@@ -2,14 +2,14 @@
 
                    Ticket
 
-Hora: 21.09        Fecha: 06-07-2021
+Hora: 21.56        Fecha: 06-07-2021
 
 
 Nombre: Nombre
 Apellido: Apellido
 
 Automovil
-Placa: m6
+Placa: a6
 
 
 Por favor guarde este ticket
