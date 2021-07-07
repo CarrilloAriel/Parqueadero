@@ -40,8 +40,8 @@ public class _PyParqueadero {
        Parqueaderos.insertarInicio(new Parqueadero("A3",null));
        Parqueaderos.insertarInicio(new Parqueadero("A4",null));
        Parqueaderos.insertarInicio(new Parqueadero("A5",null));
-      /* 
-       ColaDeCarros.insertar(new Vehiculo("1", "2023", new Persona("Pepe", "1")));
+      
+       /*ColaDeCarros.insertar(new Vehiculo("1", "2023", new Persona("Pepe", "1")));
        ColaDeCarros.insertar(new Vehiculo("2", "2023", new Persona("Pepe", "1")));
        ColaDeCarros.insertar(new Vehiculo("3", "2023", new Persona("Pepe", "1")));
         //holaaaassss
@@ -56,8 +56,8 @@ public class _PyParqueadero {
            
        }else{
            //System.out.println("No hay lugares");
-       }*/
-       while(!salir){
+       }
+       while(!salir){*/
            
        System.out.println("1.Ingresar al parqueadero y ver tarifas\n"
                + "2.Atender\n"                
@@ -83,12 +83,12 @@ public class _PyParqueadero {
                         System.out.println(t1);
                         
                     }
-                    ColaDeCarros.insertar(new Vehiculo("1", "2023", new Persona("Pepe", "1")));
+                    /*ColaDeCarros.insertar(new Vehiculo("1", "2023", new Persona("Pepe", "1")));
                     ColaDeCarros.insertar(new Vehiculo("2", "2023", new Persona("Pepe", "2")));
                     ColaDeCarros.insertar(new Vehiculo("3", "2023", new Persona("Pepe", "3")));                    
                     ColaDeCarros.insertar(new Vehiculo("4", "2023", new Persona("Pepe", "4")));
                     ColaDeCarros.insertar(new Vehiculo("5", "2023", new Persona("Pepe", "4")));
-                    ColaDeCarros.insertar(new Vehiculo("6", "2023", new Persona("Pepe", "4")));
+                    ColaDeCarros.insertar(new Vehiculo("6", "2023", new Persona("Pepe", "4")));*/
                 break;
                 case 2:
                      if(Parqueaderos.hayDisponible() && ColaDeCarros.esVacia()==false){                      
@@ -136,4 +136,4 @@ public class _PyParqueadero {
         
     }
     
-}
+

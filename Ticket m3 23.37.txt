@@ -2,14 +2,14 @@
 
                    Ticket
 
-Hora: 12.23        Fecha: 07-06-2021
+Hora: 23.37        Fecha: 05-07-2021
 
 
-Nombre: Sara
-Apellido: Olmedo
+Nombre: Nombre
+Apellido: Apellido
 
 Automovil
-Placa: vxt
+Placa: m3
 
 
 Por favor guarde este ticket

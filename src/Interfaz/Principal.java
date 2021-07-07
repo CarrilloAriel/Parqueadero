@@ -27,9 +27,10 @@ public class Principal extends javax.swing.JFrame {
     
     static Cola ColaDeCarros = new Cola();
     static Lista Parqueaderos = new Lista();
-   
+
    
     PanelIngresarVehiculo panelingresarvehiculo;
+    PanelRetirarVehiculo panelretirarvehiculo;
     //PanelRetirarVehiculo panelretirarvehiculo;
     //PanelListarVehiculos panelListarVehiculos;
     public Principal() {
@@ -38,12 +39,16 @@ public class Principal extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setSize(800,500);
         panelingresarvehiculo = new PanelIngresarVehiculo();
+        panelretirarvehiculo = new PanelRetirarVehiculo();
+        panelretirarvehiculo.setBounds(300,0,473,400);
         panelingresarvehiculo.setBounds(300,0,473,400);
         add(panelingresarvehiculo);
+       //add(panelretirarvehiculo);
+       // panelretirarvehiculo.setVisible(false);
         //panelretirarvehiculo = new PanelRetirarVehiculo();
         //panelretirarvehiculo.setBounds(300,0,473,400);
         //add(panelretirarvehiculo);
-        //panelretirarvehiculo.setVisible(false);
+        // panelretirarvehiculo.setVisible(false);
         //panelListarVehiculos = new PanelListarVehiculos();
         //panelListarVehiculos.setBounds(350,0,1116,400);
         //add(panelListarVehiculos);
@@ -254,9 +259,9 @@ public class Principal extends javax.swing.JFrame {
 
     private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
         // TODO add your handling code here:
-       // setSize(800,450);
+         setSize(800,450);
         //panelListarVehiculos.setVisible(false);
-        //panelretirarvehiculo.setVisible(false);
+        panelretirarvehiculo.setVisible(false);
         panelingresarvehiculo.setVisible(true);
         
         revalidate();
@@ -265,10 +270,11 @@ public class Principal extends javax.swing.JFrame {
 
     private void button2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2ActionPerformed
         // TODO add your handling code here:
-        //setSize(800,450);
+        setSize(800,450);
         //panelListarVehiculos.setVisible(false);
         panelingresarvehiculo.setVisible(false);
-        //panelretirarvehiculo.setVisible(true);
+        
+        panelretirarvehiculo.setVisible(true);
          revalidate();
         repaint();
         
@@ -278,6 +284,7 @@ public class Principal extends javax.swing.JFrame {
     private void button3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button3ActionPerformed
         // TODO add your handling code here:
         setSize(1116,450);
+        
         //add(panelListarVehiculos);
         //panelListarVehiculos.setVisible(true);
         panelingresarvehiculo.setVisible(false);
@@ -351,9 +358,10 @@ public class Principal extends javax.swing.JFrame {
        Parqueaderos.insertarInicio(new Parqueadero("A3",null));
        Parqueaderos.insertarInicio(new Parqueadero("A4",null));
        Parqueaderos.insertarInicio(new Parqueadero("A5",null));
+       
                 try {
-                    ColaDeCarros.insertar(new Vehiculo("1", "2023", new Persona("Pepe", "1")));
-                    Parqueaderos.parquear(ColaDeCarros.atender()); 
+                   //ColaDeCarros.insertar(new Vehiculo("1", "2023", new Persona("Pepe", "1")));
+                    //Parqueaderos.parquear(ColaDeCarros.atender()); 
                 } catch (Exception ex) {
                     Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
                 }

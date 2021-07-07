@@ -5,6 +5,8 @@
  */
 package Base;
 
+import java.text.ParseException;
+import java.util.Date;
 import jdk.nashorn.internal.ir.BreakNode;
 import parqueadero_proyecto.Parqueadero;
 import parqueadero_proyecto.Vehiculo;
@@ -85,15 +87,15 @@ public class Lista {
             
         }
     }
-    public boolean eliminar(String ip){
+    public boolean eliminar(String num){
         if(esVacia()){
             System.out.println("No hay elementos");
             return false;
         }else{
-            if(inicio==fin && inicio.getDato().getNumeroLugar().compareTo(ip)==0){
+            if(inicio==fin && inicio.getDato().getNumeroLugar().compareTo(num)==0){
                 inicio=fin=null;
                 return true;
-            }else if(inicio.getDato().getNumeroLugar().compareTo(ip)==0){
+            }else if(inicio.getDato().getNumeroLugar().compareTo(num)==0){
                 NodoLista aux = inicio;                
                 inicio = inicio.getSiguiente();
                 aux.setSiguiente(null);//porque ese inicio ya no existe
@@ -101,11 +103,11 @@ public class Lista {
                 return true;
             }else{
                 NodoLista aux=inicio;
-                while(aux!=null && aux.getDato().getNumeroLugar().compareTo(ip)!=0){//sale cuando haya coincidencia
+                while(aux!=null && aux.getDato().getCarro().getPlaca().compareTo(num)!=0){//sale cuando haya coincidencia
                     aux = aux.getSiguiente();
                 }
                 if(aux==null){
-                    System.out.println("No hay la direccion "+ip);
+                    System.out.println("El lugar "+num+" no existe");
                     return false;
                 }else{
                     
@@ -164,10 +166,13 @@ public class Lista {
         
         NodoLista aux = inicio;
         
-            while(aux!=null && aux.getDato().getCarro()!=null){
-                if(placa.compareTo(aux.getDato().getCarro().getPlaca())==0){
-                    aux.getDato().setCarro(null);
-                    return true;                
+            while(aux!=null){
+                if(aux.getDato().getCarro()!=null){
+                    
+                    if(placa.compareTo(aux.getDato().getCarro().getPlaca())==0){
+                        aux.getDato().setCarro(null);
+                        return true;             
+                    }
                 }
                 aux = aux.getSiguiente();
             
@@ -175,6 +180,65 @@ public class Lista {
         System.out.println("ESE CARRO NO ESTA PARQUEADO");            
         
         return false;
+    }
+    public Date buscarHoraEntrada(String placa){
+        Date hora=null;
+        NodoLista aux = inicio;
+        
+            while(aux!=null ){
+                if( aux.getDato().getCarro()!=null){
+                    if(placa.compareTo(aux.getDato().getCarro().getPlaca())==0){
+
+                        hora=aux.getDato().getCarro().getHoraEntrada();
+
+                        //minutos=(int) ((horaSalida.getTime()-aux.getDato().getCarro().getPersona().getHoraEntrada().getTime())/60000);
+                    }
+                }
+                aux = aux.getSiguiente();
+            }
+        return hora;
+        //minutos=(horaSalida.getTime()-horaSalida.getTime())/60000;
+        
+    }
+    public int calcularTiempo(String placa,Date horaSalida){
+        NodoLista aux = inicio;
+        int minutos=0;
+            while(aux !=null){
+                if(aux.getDato().getCarro()!=null){
+                    if(placa.compareTo(aux.getDato().getCarro().getPlaca())==0){
+                                       
+                       minutos=(int) ((horaSalida.getTime()-aux.getDato().getCarro().getHoraEntrada().getTime())/60000);
+                    }  
+                }
+                
+                aux = aux.getSiguiente();
+            
+            }
+        return minutos;
+        
+    }
+    public double valorPagar(String placa, int minutos){
+       double valor=0.0;
+       NodoLista aux = inicio;
+       while(aux!=null){
+            if(aux.getDato().getCarro()!=null){
+                if(placa.compareTo(aux.getDato().getCarro().getPlaca())==0){
+                                       
+                   if(aux.getDato().getCarro().getTipo().compareToIgnoreCase("Automovil")==0){
+                       valor=minutos*0.50;
+                   }else{
+                       valor=minutos*0.25;
+                   }
+                }
+                
+            }
+              
+            aux = aux.getSiguiente();
+            
+        }
+       
+       
+       return valor; 
     }
     public int contarLugaresDisponibles(){
         NodoLista aux = inicio;
@@ -211,5 +275,19 @@ public class Lista {
             aux = aux.getSiguiente();
         }
         return s;
+    }
+    public boolean buscarPlaca(String placa){
+        NodoLista aux = inicio;
+        boolean flag=false;
+            while(aux!=null ){
+                if( aux.getDato().getCarro()!=null){
+                    if(placa.compareTo(aux.getDato().getCarro().getPlaca())==0){
+                       flag=true;
+                       return flag;
+                    }
+                }
+                aux = aux.getSiguiente();
+            }
+        return flag;
     }
 }

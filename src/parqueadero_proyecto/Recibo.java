@@ -8,9 +8,7 @@ public class Recibo {
     private double total;
     private Persona datosPersona;
 
-    public void imprimirTicket() {
-    }
-
+    
     public String pagarRecibo(String placa) {
         throw new UnsupportedOperationException("Not supported yet.");
     }

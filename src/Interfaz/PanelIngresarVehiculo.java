@@ -67,7 +67,6 @@ public class PanelIngresarVehiculo extends javax.swing.JPanel {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
-        tfPlaca = new javax.swing.JTextField();
         tfPropietario = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -76,13 +75,12 @@ public class PanelIngresarVehiculo extends javax.swing.JPanel {
         rbAuto = new javax.swing.JRadioButton();
         button1 = new java.awt.Button();
         tfPropietario1 = new javax.swing.JTextField();
+        tfPlaca = new javax.swing.JTextField();
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Segoe UI Symbol", 0, 16)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 0, 0));
         jLabel1.setText("Modulo de Ingreso de vehiculos al parqueadero");
-
-        tfPlaca.setFont(new java.awt.Font("Segoe UI Symbol", 1, 24)); // NOI18N
 
         tfPropietario.setFont(new java.awt.Font("Segoe UI Symbol", 0, 12)); // NOI18N
         tfPropietario.setText("Nombre");
@@ -132,22 +130,26 @@ public class PanelIngresarVehiculo extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
-                    .addComponent(tfPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
                     .addComponent(jLabel2)
                     .addComponent(jLabel1))
                 .addGap(61, 61, 61))
             .addGroup(layout.createSequentialGroup()
-                .addGap(83, 83, 83)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(rbMoto)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(rbAuto))
+                        .addGap(83, 83, 83)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(rbMoto)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(rbAuto))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(tfPropietario, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(tfPropietario1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(tfPropietario, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(tfPropietario1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(143, 143, 143)
+                        .addComponent(tfPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -180,6 +182,7 @@ public class PanelIngresarVehiculo extends javax.swing.JPanel {
     String fechaHora = "";
     String hora = "";
     String fecha = "";
+    
      public static final String DEST = "proyectoparqueadero/hello_world.pdf";
      
     private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
@@ -198,18 +201,19 @@ public class PanelIngresarVehiculo extends javax.swing.JPanel {
             Calendar cal = Calendar.getInstance();
             Date date = cal.getTime();
             fechaHora = dateFormat.format(date);
+            //fechaHora = dateFormat.format(date);
             
-            //formato hora
+            /*//formato hora
             DateFormat dateForma = new SimpleDateFormat("HH.mm");
             Calendar ca = Calendar.getInstance();
             Date dat = ca.getTime();
-            hora = dateForma.format(dat);
+            hora = dateForma.format(dat);*/
             
             //formato fecha
-            DateFormat dateForm = new SimpleDateFormat("dd-MM-yyyy");
+            /*DateFormat dateForm = new SimpleDateFormat("dd-MM-yyyy");
             Calendar c = Calendar.getInstance();
             Date da = c.getTime();
-            fecha = dateForm.format(da);
+            fecha = dateForm.format(da);*/
             
             System.out.print("Ingreso en: "+dateFormat.format(date));
             //(placa, propietario,tipovehiculo,horaentrada,estado
@@ -221,14 +225,23 @@ public class PanelIngresarVehiculo extends javax.swing.JPanel {
         } catch (InputMismatchException ex) {
                 JOptionPane.showMessageDialog(null,"Tiene que escribir correctamente los datos");
         }
-        
-        
+ 
+          
        
-        
-        
         try {
-            Principal.ColaDeCarros.insertar(new Vehiculo(tfPlaca.getText(),clasevehiculo,new Persona(tfPropietario.getText(),tfPropietario1.getText())));
-              JOptionPane.showMessageDialog(null, "El vehiculo entro a la cola");
+               //Hora de entrada
+            DateFormat dateForma = new SimpleDateFormat("HH.mm");
+            Calendar ca = Calendar.getInstance();
+            Date horaEntrada = ca.getTime();
+            hora = dateForma.format(horaEntrada);
+         //Fecha de entrada
+            DateFormat dateForm = new SimpleDateFormat("dd-MM-yyyy");
+            Calendar c = Calendar.getInstance();
+            Date fechaEntrada = c.getTime();
+            fecha = dateForm.format(fechaEntrada);
+            //Principal.ColaDeCarros.insertar(new Vehiculo(tfPlaca.getText(),clasevehiculo,new Persona(tfPropietario.getText(),tfPropietario1.getText(),hora,fechaEntrada)));
+            Principal.ColaDeCarros.insertar(new Vehiculo(tfPlaca.getText(),clasevehiculo,horaEntrada,new Persona(tfPropietario.getText(),tfPropietario1.getText())));
+            JOptionPane.showMessageDialog(null, "El vehiculo entro a la cola");
         }catch (Exception ex) {
             Logger.getLogger(PanelIngresarVehiculo.class.getName()).log(Level.SEVERE, null, ex);
         }  
