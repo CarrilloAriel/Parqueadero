@@ -1,0 +1,17 @@
+                SECUREPARK
+
+                   RECIBO
+
+Fecha:12-07-2021
+Hora Entrada: 18.32        Hora Salida: 18.30
+
+
+Nombre: Nombre
+Apellido: Apellido
+
+Tipo de Vehículo: Automovil
+Placa: red3
+Valor a pagar: 1.0
+
+
+Gracias por Preferirnos

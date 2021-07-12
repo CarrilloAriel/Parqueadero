@@ -1,0 +1,16 @@
+                SECUREPARK
+
+                   Ticket
+
+Hora: 18.30        Fecha: 12-07-2021
+
+
+Nombre: Nombre
+Apellido: Apellido
+
+Motocicleta
+Placa: red2
+
+
+Por favor guarde este ticket
+La multa por la perdida de este ticket es de 15 USD

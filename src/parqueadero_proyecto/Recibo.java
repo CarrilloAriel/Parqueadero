@@ -1,21 +1,48 @@
 package parqueadero_proyecto;
 
+import java.util.Date;
+
 public class Recibo {
 
     private String horaDeSalida;
     private String horaEntrada;
     private String fecha;
     private String placa;
+    private String nombre;
+    private String apellido;
     private String tipoVehiculo;
     private double total;
 
-    public Recibo(String horaDeSalida, String horaEntrada, String fecha, String placa, String tipoVehiculo, double total) {
+    public Recibo(String horaDeSalida, String horaEntrada, String fecha, String placa, String nombre, String apellido, String tipoVehiculo, double total) {
         this.horaDeSalida = horaDeSalida;
         this.horaEntrada = horaEntrada;
         this.fecha = fecha;
         this.placa = placa;
+        this.nombre = nombre;
+        this.apellido = apellido;
         this.tipoVehiculo = tipoVehiculo;
         this.total = total;
+    }
+
+   
+    public Recibo(){
+        
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
     }
 
     public String getHoraDeSalida() {

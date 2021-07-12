@@ -224,9 +224,9 @@ public class PanelIngresarVehiculo extends javax.swing.JPanel {
        
         try {
            
-            if(Principal.Parqueaderos.buscarPlaca(tfPlaca.getText()) || Principal.ColaDeCarros.buscarPlacaCola(tfPlaca.getText())){
+            if(Principal.Parqueaderos.buscarPlacaF(tfPlaca.getText()) || Principal.ColaDeCarros.buscarPlacaCola(tfPlaca.getText())){
                 
-                if(Principal.Parqueaderos.buscarPlaca(tfPlaca.getText())){
+                if(Principal.Parqueaderos.buscarPlacaF(tfPlaca.getText())){
                     JOptionPane.showMessageDialog(null, "El vehiculo se encuentra actualmente parqueado en el parqueadero");
                 }else{
                     JOptionPane.showMessageDialog(null, "El vehiculo se encuentra actualmente en la cola de espera");

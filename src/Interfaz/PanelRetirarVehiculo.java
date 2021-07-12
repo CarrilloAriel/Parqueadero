@@ -172,9 +172,16 @@ public class PanelRetirarVehiculo extends javax.swing.JFrame {
 
     private void RetirarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RetirarActionPerformed
         // TODO add your handling code here:
-        if(Principal.Parqueaderos.buscarPlaca(Rplaca.getText())){
+        
+        if(Principal.Parqueaderos.buscarPlacaF(Rplaca.getText())){
+            
             String horaSalida="";
             String horaEntrada="";
+            String fecha = "";
+            DateFormat dateForm = new SimpleDateFormat("dd-MM-yyyy");
+            Calendar c = Calendar.getInstance();
+            Date fechaEntrada = c.getTime();
+            fecha = dateForm.format(fechaEntrada);
             //int min=0;
             DateFormat dateForma = new SimpleDateFormat("HH.mm");
             Calendar ca = Calendar.getInstance();
@@ -187,9 +194,59 @@ public class PanelRetirarVehiculo extends javax.swing.JFrame {
             int min=Principal.Parqueaderos.calcularTiempo(Rplaca.getText(),horS);
             to.setText(String.valueOf(min));
             vp.setText(String.valueOf(Principal.Parqueaderos.valorPagar(Rplaca.getText(),min)));
-            Principal.Parqueaderos.desparquear(Rplaca.getText());
+       
+            Recibo recibo =new Recibo(horaEntrada,horaSalida,fecha,Rplaca.getText(),Principal.Parqueaderos.buscarPlaca(Rplaca.getText()).getPersona().getNombre(),Principal.Parqueaderos.buscarPlaca(Rplaca.getText()).getPersona().getApellido(),Principal.Parqueaderos.buscarPlaca(Rplaca.getText()).getTipo(),Principal.Parqueaderos.valorPagar(Rplaca.getText(),min));
             
-            JOptionPane.showMessageDialog(null, "El vehiculo se retiro exitosamente");
+            //Inicio Recibo
+                String titulo = "Recibo "+Rplaca.getText()+" "+horaSalida+".txt";
+                try {
+
+                     PrintWriter writer = new PrintWriter(titulo,"UTF-8");
+                     writer.println("                SECUREPARK");
+                     writer.println();
+                     writer.println("                   RECIBO");
+                     writer.println();
+                     writer.println("Fecha:"+recibo.getFecha());
+                     writer.println("Hora Entrada: "+recibo.getHoraEntrada()+"        Hora Salida: "+recibo.getHoraDeSalida());
+                     writer.println();
+                     writer.println();
+                     writer.println("Nombre: "+recibo.getNombre());
+                     writer.println("Apellido: "+recibo.getApellido());
+                     writer.println();
+                     writer.println("Tipo de Vehículo: "+recibo.getTipoVehiculo());
+                     writer.println("Placa: "+Rplaca.getText());
+                     writer.println("Valor a pagar: "+recibo.getTotal());
+                     writer.println();
+                     writer.println();
+                     writer.println("Gracias por Preferirnos");
+                     writer.close();
+
+                 } catch (FileNotFoundException ex) {
+                     Logger.getLogger(PanelIngresarVehiculo.class.getName()).log(Level.SEVERE, null, ex);
+                 } catch (UnsupportedEncodingException ex) {
+                     Logger.getLogger(PanelIngresarVehiculo.class.getName()).log(Level.SEVERE, null, ex);
+                 }
+                 //Inicio para abrir archivo txt
+                 try {
+
+                     File objetofile = new File (titulo);
+                     Desktop.getDesktop().open(objetofile);
+
+                  }catch (IOException ex) {
+
+                     System.out.println(ex);
+
+                 }
+                
+               Principal.Parqueaderos.desparquear(Rplaca.getText());
+               JOptionPane.showMessageDialog(null, "El vehiculo se retiro exitosamente");
+
+
+            
+            
+            
+            
+            
             
             if(Principal.Parqueaderos.hayDisponible() && Principal.ColaDeCarros.esVacia()==false){                      
                     try { 

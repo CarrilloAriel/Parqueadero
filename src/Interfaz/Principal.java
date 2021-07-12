@@ -27,7 +27,6 @@ public class Principal extends javax.swing.JFrame {
     
     static Cola ColaDeCarros = new Cola();
     static Lista Parqueaderos = new Lista();
-
    
     PanelIngresarVehiculo panelingresarvehiculo;
     PanelRetirarVehiculo panelretirarvehiculo;

@@ -276,7 +276,7 @@ public class Lista {
         }
         return s;
     }
-    public boolean buscarPlaca(String placa){
+    public boolean buscarPlacaF(String placa){
         NodoLista aux = inicio;
         boolean flag=false;
             while(aux!=null ){
@@ -289,5 +289,20 @@ public class Lista {
                 aux = aux.getSiguiente();
             }
         return flag;
+    }
+    public Vehiculo buscarPlaca(String placa){
+        NodoLista aux = inicio;
+        Vehiculo carroEncontrado=null;
+   
+            while(aux!=null ){
+                if( aux.getDato().getCarro()!=null){
+                    if(placa.compareTo(aux.getDato().getCarro().getPlaca())==0){
+                      
+                       carroEncontrado=aux.getDato().getCarro();
+                    }
+                }
+                aux = aux.getSiguiente();
+            }
+        return carroEncontrado;
     }
 }
