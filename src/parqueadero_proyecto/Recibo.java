@@ -2,43 +2,60 @@ package parqueadero_proyecto;
 
 public class Recibo {
 
-    private Timer HoraDeSalida;
-    private Timer HoraEntrada;
-    private Vehiculo vehiculo;
+    private String horaDeSalida;
+    private String horaEntrada;
+    private String fecha;
+    private String placa;
+    private String tipoVehiculo;
     private double total;
-    private Persona datosPersona;
 
-    
-    public String pagarRecibo(String placa) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public Recibo(String horaDeSalida, String horaEntrada, String fecha, String placa, String tipoVehiculo, double total) {
+        this.horaDeSalida = horaDeSalida;
+        this.horaEntrada = horaEntrada;
+        this.fecha = fecha;
+        this.placa = placa;
+        this.tipoVehiculo = tipoVehiculo;
+        this.total = total;
     }
 
-    public Timer getHoraDeSalida() {
-        return HoraDeSalida;
+    public String getHoraDeSalida() {
+        return horaDeSalida;
     }
 
-    public void setHoraDeSalida(Timer horaDeSalida) {
-        this.HoraDeSalida = horaDeSalida;
+    public void setHoraDeSalida(String horaDeSalida) {
+        this.horaDeSalida = horaDeSalida;
     }
 
-    public Timer getHoraEntrada() {
-        return HoraEntrada;
+    public String getHoraEntrada() {
+        return horaEntrada;
     }
 
-    public Vehiculo getVehiculo() {
-        return vehiculo;
+    public void setHoraEntrada(String horaEntrada) {
+        this.horaEntrada = horaEntrada;
     }
 
-    public Persona getDatosPersona() {
-        return datosPersona;
+    public String getFecha() {
+        return fecha;
     }
 
-    public String getRecibo() {
-        return "";
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
     }
 
-    public void setVehiculo(Vehiculo vehiculo) {
-        this.vehiculo = vehiculo;
+    public String getPlaca() {
+        return placa;
+    }
+
+    public void setPlaca(String placa) {
+        this.placa = placa;
+    }
+
+    public String getTipoVehiculo() {
+        return tipoVehiculo;
+    }
+
+    public void setTipoVehiculo(String tipoVehiculo) {
+        this.tipoVehiculo = tipoVehiculo;
     }
 
     public double getTotal() {
@@ -48,4 +65,8 @@ public class Recibo {
     public void setTotal(double total) {
         this.total = total;
     }
+
+
+    
+    
 }

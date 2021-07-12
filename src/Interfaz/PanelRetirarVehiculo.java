@@ -188,6 +188,7 @@ public class PanelRetirarVehiculo extends javax.swing.JFrame {
             to.setText(String.valueOf(min));
             vp.setText(String.valueOf(Principal.Parqueaderos.valorPagar(Rplaca.getText(),min)));
             Principal.Parqueaderos.desparquear(Rplaca.getText());
+            
             JOptionPane.showMessageDialog(null, "El vehiculo se retiro exitosamente");
             
             if(Principal.Parqueaderos.hayDisponible() && Principal.ColaDeCarros.esVacia()==false){                      
