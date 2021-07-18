@@ -1,0 +1,16 @@
+                SECUREPARK
+
+                   Ticket
+
+Hora: 15.32        Fecha: 18-07-2021
+
+
+Nombre: ariel
+Apellido: auto
+
+Automovil
+Placa: placa
+
+
+Por favor guarde este ticket
+La multa por la perdida de este ticket es de 15 USD
