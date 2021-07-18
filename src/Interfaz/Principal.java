@@ -7,7 +7,11 @@ package Interfaz;
 
 import Base.Cola;
 import Base.Lista;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
@@ -32,6 +36,12 @@ public class Principal extends javax.swing.JFrame {
    
     PanelIngresarVehiculo panelingresarvehiculo;
     PanelRetirarVehiculo panelretirarvehiculo;
+    
+    static Date abierto=new Date();
+    static Date cerrado=new Date();
+    Calendar cal = Calendar.getInstance();
+    
+    
     //PanelRetirarVehiculo panelretirarvehiculo;
     //PanelListarVehiculos panelListarVehiculos;
     public Principal() {
@@ -44,7 +54,7 @@ public class Principal extends javax.swing.JFrame {
         panelretirarvehiculo.setBounds(300,0,473,400);
         panelingresarvehiculo.setBounds(300,0,473,400);
         add(panelingresarvehiculo);
-       //add(panelretirarvehiculo);
+        //add(panelretirarvehiculo);
        // panelretirarvehiculo.setVisible(false);
         //panelretirarvehiculo = new PanelRetirarVehiculo();
         //panelretirarvehiculo.setBounds(300,0,473,400);
@@ -375,9 +385,6 @@ public class Principal extends javax.swing.JFrame {
                 // Inicio del programa principal
        
        // Cola ColaDeCarros = new Cola();
-        
-        
-        Scanner sc = new Scanner(System.in);
         //Lista Parqueaderos = new Lista();
         for(int i=1;i<6;i++){
             Parqueaderos.insertarFin(new Parqueadero("A"+i,null));
