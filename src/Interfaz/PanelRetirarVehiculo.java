@@ -79,6 +79,12 @@ public class PanelRetirarVehiculo extends javax.swing.JFrame {
             }
         });
 
+        vp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                vpActionPerformed(evt);
+            }
+        });
+
         jLabel2.setText("Ingrese la placa ");
 
         jLabel3.setText("Valor a pagar: ");
@@ -308,6 +314,10 @@ public class PanelRetirarVehiculo extends javax.swing.JFrame {
     private void toActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_toActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_toActionPerformed
+
+    private void vpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vpActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_vpActionPerformed
 
    
 

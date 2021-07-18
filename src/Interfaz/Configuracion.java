@@ -65,8 +65,6 @@ public class Configuracion extends javax.swing.JFrame {
             }
         });
 
-        nPlazasConf.setText("jTextField1");
-
         jLabel1.setText("Nuevo n° de plazas");
 
         jLabel2.setText("1era hora:");
@@ -172,13 +170,13 @@ public class Configuracion extends javax.swing.JFrame {
                             .addComponent(jLabel3)
                             .addComponent(tfAuto2da, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel7)
-                            .addComponent(tfAutoMax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel4)
+                                .addComponent(tfAutoMax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(60, 60, 60)
                         .addComponent(cambiar))
                     .addComponent(tfMotoMax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -205,7 +203,8 @@ public class Configuracion extends javax.swing.JFrame {
         }
         else{
             if(Principal.Parqueaderos.contar()==Principal.Parqueaderos.contarLugaresDisponibles()){
-                for(int i = 0;i<Principal.Parqueaderos.contar()-Integer.parseInt(nPlazasConf.getText());i++){
+                int num=Principal.Parqueaderos.contar()-Integer.parseInt(nPlazasConf.getText());
+                for(int i = 0;i<num;i++){
                     System.out.println(Principal.Parqueaderos.contar()-Integer.parseInt(nPlazasConf.getText()));
                     try {
                         Principal.Parqueaderos.eliminarFin();
@@ -213,13 +212,13 @@ public class Configuracion extends javax.swing.JFrame {
                         Logger.getLogger(Configuracion.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
-                while(Principal.Parqueaderos.contar()<Integer.parseInt(nPlazasConf.getText())){
+               /* while(Principal.Parqueaderos.contar()<Integer.parseInt(nPlazasConf.getText())){
                     try {
                         Principal.Parqueaderos.eliminarFin();
                     } catch (Exception ex) {
                         Logger.getLogger(Configuracion.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                }
+                }*/
             }
             else{
                 JOptionPane.showMessageDialog(null, "No se puede disminuir la cantidad de plazas disponibles si hay autos dentro del parqueadero!","Error!", JOptionPane.ERROR_MESSAGE);
