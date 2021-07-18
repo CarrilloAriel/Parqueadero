@@ -209,6 +209,7 @@ public class PanelIngresarVehiculo extends javax.swing.JPanel {
     private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
         
         Calendar hoy = Calendar.getInstance();
+        //212
             Date horaActual = hoy.getTime();
             if(Principal.abierto.compareTo(horaActual)>0 || Principal.cerrado.compareTo(horaActual)<0){
                 JOptionPane.showMessageDialog(null, "Parqueadero Cerrado","Error!", JOptionPane.WARNING_MESSAGE);
