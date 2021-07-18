@@ -1,0 +1,17 @@
+                SECUREPARK
+
+                   RECIBO
+
+Fecha:18-07-2021
+Hora Entrada: 11.39        Hora Salida: 11.39
+
+
+Nombre: Nombre1
+Apellido: Apellido1
+
+Tipo de Vehículo: Motocicleta
+Placa: asdf
+Valor a pagar: 0.0
+
+
+Gracias por Preferirnos

@@ -98,7 +98,13 @@ public class PanelIngresarVehiculo extends javax.swing.JPanel {
         jLabel4.setText("Tipo de vehiculo");
 
         buttonGroup1.add(rbMoto);
+        rbMoto.setSelected(true);
         rbMoto.setText("Motocicleta");
+        rbMoto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbMotoActionPerformed(evt);
+            }
+        });
 
         buttonGroup1.add(rbAuto);
         rbAuto.setText("Automovil");
@@ -324,6 +330,10 @@ public class PanelIngresarVehiculo extends javax.swing.JPanel {
     private void tfPropietario1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfPropietario1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tfPropietario1ActionPerformed
+
+    private void rbMotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbMotoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rbMotoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

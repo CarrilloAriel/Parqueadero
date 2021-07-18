@@ -379,11 +379,10 @@ public class Principal extends javax.swing.JFrame {
         
         Scanner sc = new Scanner(System.in);
         //Lista Parqueaderos = new Lista();
-       Parqueaderos.insertarInicio(new Parqueadero("A1",null));
-       Parqueaderos.insertarInicio(new Parqueadero("A2",null));
-       Parqueaderos.insertarInicio(new Parqueadero("A3",null));
-       Parqueaderos.insertarInicio(new Parqueadero("A4",null));
-       Parqueaderos.insertarInicio(new Parqueadero("A5",null));
+        for(int i=1;i<6;i++){
+            Parqueaderos.insertarFin(new Parqueadero("A"+i,null));
+        }
+        
        
                 try {
                    //ColaDeCarros.insertar(new Vehiculo("1", "2023", new Persona("Pepe", "1")));

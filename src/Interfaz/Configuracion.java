@@ -5,6 +5,12 @@
  */
 package Interfaz;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import parqueadero_proyecto.Parqueadero;
+import parqueadero_proyecto.Tarifa;
+
 /**
  *
  * @author Usuario
@@ -16,6 +22,12 @@ public class Configuracion extends javax.swing.JFrame {
      */
     public Configuracion() {
         initComponents();
+        tfAuto1era.setText(""+Principal.tarifasAuto.get(0).getValor());
+        tfAuto2da.setText(""+Principal.tarifasAuto.get(1).getValor());
+        tfAutoMax.setText(""+Principal.tarifasAuto.get(2).getValor());
+        tfMoto1era.setText(""+Principal.tarifasMoto.get(0).getValor());
+        tfMoto2da.setText(""+Principal.tarifasMoto.get(1).getValor());
+        tfMotoMax.setText(""+Principal.tarifasMoto.get(2).getValor());
     }
 
     /**
@@ -28,68 +40,192 @@ public class Configuracion extends javax.swing.JFrame {
     private void initComponents() {
 
         cambiar = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        nPlazasConf = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        tfAuto2da = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        tfAutoMax = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        tfAuto1era = new javax.swing.JTextField();
+        tfMoto1era = new javax.swing.JTextField();
+        tfMoto2da = new javax.swing.JTextField();
+        tfMotoMax = new javax.swing.JTextField();
 
         cambiar.setText("Cambiar");
+        cambiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cambiarActionPerformed(evt);
+            }
+        });
 
-        jTextField1.setText("jTextField1");
+        nPlazasConf.setText("jTextField1");
 
-        jLabel1.setText("Nuevo n° de playas");
+        jLabel1.setText("Nuevo n° de plazas");
 
-        jTextField2.setText("jTextField2");
+        jLabel2.setText("1era hora:");
 
-        jLabel2.setText("Nueva tarifa ");
+        jLabel3.setText("A partir de la 2da hora");
 
-        jTextField3.setText("jTextField3");
+        jLabel4.setText("Máximo diario:");
+
+        jLabel5.setText("1era hora:");
+
+        jLabel6.setText("A partir de la 2da hora:");
+
+        jLabel7.setText("Máximo diario:");
+
+        jLabel8.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel8.setText("Automóvil");
+
+        jLabel9.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel9.setText("Motocicleta");
+
+        jLabel10.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        jLabel10.setText("Configuración");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(166, 166, 166)
+                        .addComponent(jLabel10))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(75, 75, 75)
+                            .addComponent(jLabel8)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel9))
+                        .addGroup(layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel2)
+                                        .addComponent(jLabel3)
+                                        .addComponent(jLabel4))
+                                    .addGap(34, 34, 34)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(tfAuto2da, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(tfAutoMax, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(tfAuto1era, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(20, 20, 20)))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(71, 71, 71)
+                                    .addComponent(nPlazasConf, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel5)
+                                        .addComponent(jLabel6)
+                                        .addComponent(jLabel7)))))))
+                .addContainerGap(91, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(cambiar))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(46, 46, 46)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 115, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
-                            .addComponent(jTextField2)
-                            .addComponent(jTextField3))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(cambiar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(tfMotoMax)
+                    .addComponent(tfMoto2da)
+                    .addComponent(tfMoto1era))
                 .addGap(50, 50, 50))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(53, 53, 53)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addContainerGap()
+                .addComponent(jLabel10)
+                .addGap(26, 26, 26)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(nPlazasConf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(63, 63, 63)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel9)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel5)
+                            .addComponent(tfMoto1era, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(tfMoto2da, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel8)
+                        .addGap(23, 23, 23)
+                        .addComponent(tfAuto1era, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(tfAuto2da, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel2))
-                .addGap(18, 18, 18)
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
-                .addComponent(cambiar)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel7)
+                            .addComponent(tfAutoMax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(60, 60, 60)
+                        .addComponent(cambiar))
+                    .addComponent(tfMotoMax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(24, 24, 24))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cambiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cambiarActionPerformed
+        // TODO add your handling code here:
+        Principal.tarifasAuto.set(0, new Tarifa("1ra hora: $",Double.parseDouble(tfAuto1era.getText())));
+        Principal.tarifasAuto.set(1, new Tarifa("Apartir de la 2da hora: ",Double.parseDouble(tfAuto2da.getText())));
+        Principal.tarifasAuto.set(2, new Tarifa("Tarifa máxima diaria: ",Double.parseDouble(tfAutoMax.getText())));
+        Principal.tarifasMoto.set(0, new Tarifa("1ra hora: $",Double.parseDouble(tfMoto1era.getText())));
+        Principal.tarifasMoto.set(1, new Tarifa("Apartir de la 2da hora: ",Double.parseDouble(tfMoto2da.getText())));
+        Principal.tarifasMoto.set(2, new Tarifa("Tarifa máxima diaria: ",Double.parseDouble(tfMotoMax.getText())));
+        
+        //cambio de plazas
+        if(Principal.Parqueaderos.contar()<=Integer.parseInt(nPlazasConf.getText())){
+            for(int i=Principal.Parqueaderos.contar()+1;i<Integer.parseInt(nPlazasConf.getText())+1;i++){
+                Principal.Parqueaderos.insertarFin(new Parqueadero("A"+i,null));
+            }
+        }
+        else{
+            if(Principal.Parqueaderos.contar()==Principal.Parqueaderos.contarLugaresDisponibles()){
+                for(int i = 0;i<Principal.Parqueaderos.contar()-Integer.parseInt(nPlazasConf.getText());i++){
+                    System.out.println(Principal.Parqueaderos.contar()-Integer.parseInt(nPlazasConf.getText()));
+                    try {
+                        Principal.Parqueaderos.eliminarFin();
+                    } catch (Exception ex) {
+                        Logger.getLogger(Configuracion.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+                while(Principal.Parqueaderos.contar()<Integer.parseInt(nPlazasConf.getText())){
+                    try {
+                        Principal.Parqueaderos.eliminarFin();
+                    } catch (Exception ex) {
+                        Logger.getLogger(Configuracion.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "No se puede disminuir la cantidad de plazas disponibles si hay autos dentro del parqueadero!","Error!", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_cambiarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -121,7 +257,7 @@ public class Configuracion extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Configuracion().setVisible(true);
+                new Configuracion().setVisible(false);
             }
         });
     }
@@ -129,9 +265,21 @@ public class Configuracion extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cambiar;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JTextField nPlazasConf;
+    private javax.swing.JTextField tfAuto1era;
+    private javax.swing.JTextField tfAuto2da;
+    private javax.swing.JTextField tfAutoMax;
+    private javax.swing.JTextField tfMoto1era;
+    private javax.swing.JTextField tfMoto2da;
+    private javax.swing.JTextField tfMotoMax;
     // End of variables declaration//GEN-END:variables
 }

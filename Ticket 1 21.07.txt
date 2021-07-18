@@ -1,0 +1,16 @@
+                SECUREPARK
+
+                   Ticket
+
+Hora: 21.07        Fecha: 06-07-2021
+
+
+Nombre: Nombre
+Apellido: Apellido
+
+Automovil
+Placa: 1
+
+
+Por favor guarde este ticket
+La multa por la perdida de este ticket es de 15 USD
