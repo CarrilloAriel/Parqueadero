@@ -22,18 +22,25 @@ public class Tarifas extends javax.swing.JFrame {
     public Tarifas() {
         initComponents();
         setLocationRelativeTo(null);
-        List <Tarifa> tarifas = new ArrayList<>();
-        tarifas.add(new Tarifa("Menos de 25",0.25));
-        tarifas.add(new Tarifa("Entre 25 min y 1 hora",0.5));
-        tarifas.add(new Tarifa("Entre 1 hora y 5 horas ",2.00));
-        tarifas.add(new Tarifa("Más de 5 horas",7.00));
+       // List <Tarifa> tarifasAuto = new ArrayList<>();
+      
+        
         //Iterator<Tarifa> it = tarifas.iterator();
-        String t="";
-        for(int i=0; i<tarifas.size();i++){
-            t=t+tarifas.get(i)+"\n";
+        
+        String t="****Tarifas Auto**** \n";
+        for(int i=0; i<Principal.tarifasAuto.size();i++){
+            t=t+Principal.tarifasAuto.get(i)+"\n";
+            
+        }
+        t=t+"****Tarifas Moto****\n";
+        for(int i=0; i<Principal.tarifasMoto.size();i++){
+            t=t+Principal.tarifasMoto.get(i)+"\n";
             
         }
         Tarifas.setText(t);
+        
+      
+        
     }
 
     /**
@@ -67,8 +74,8 @@ public class Tarifas extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();

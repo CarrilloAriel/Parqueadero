@@ -27,6 +27,8 @@ public class Principal extends javax.swing.JFrame {
     
     static Cola ColaDeCarros = new Cola();
     static Lista Parqueaderos = new Lista();
+    static List <Tarifa> tarifasAuto = new ArrayList<>();
+    static List <Tarifa> tarifasMoto = new ArrayList<>();
    
     PanelIngresarVehiculo panelingresarvehiculo;
     PanelRetirarVehiculo panelretirarvehiculo;
@@ -77,6 +79,7 @@ public class Principal extends javax.swing.JFrame {
         button4 = new java.awt.Button();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        config = new javax.swing.JButton();
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
         jFrame1.getContentPane().setLayout(jFrame1Layout);
@@ -186,37 +189,48 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        config.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/tuerca logo.png"))); // NOI18N
+        config.setText("jButton3");
+        config.setDisabledIcon(new javax.swing.ImageIcon("C:\\Users\\Usuario\\Downloads\\tuerca.png")); // NOI18N
+        config.setMaximumSize(new java.awt.Dimension(50, 50));
+        config.setMinimumSize(new java.awt.Dimension(50, 50));
+        config.setPreferredSize(new java.awt.Dimension(50, 50));
+        config.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                configActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout PanelMenuLayout = new javax.swing.GroupLayout(PanelMenu);
         PanelMenu.setLayout(PanelMenuLayout);
         PanelMenuLayout.setHorizontalGroup(
             PanelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelMenuLayout.createSequentialGroup()
+                .addGap(71, 71, 71)
                 .addGroup(PanelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PanelMenuLayout.createSequentialGroup()
-                        .addGap(71, 71, 71)
-                        .addGroup(PanelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(PanelMenuLayout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel2)))
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel2))
+                .addContainerGap())
+            .addGroup(PanelMenuLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addGroup(PanelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PanelMenuLayout.createSequentialGroup()
-                        .addGroup(PanelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(PanelMenuLayout.createSequentialGroup()
-                                .addGap(29, 29, 29)
-                                .addGroup(PanelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(button3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(button1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addGroup(PanelMenuLayout.createSequentialGroup()
-                                .addGap(52, 52, 52)
-                                .addComponent(jButton1)))
+                        .addComponent(jButton1)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(config, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(PanelMenuLayout.createSequentialGroup()
+                        .addGroup(PanelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(button3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(button1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(PanelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(PanelMenuLayout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(jButton2))
-                            .addComponent(button2, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(button4, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(27, Short.MAX_VALUE))
+                        .addGroup(PanelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(button2, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
+                            .addComponent(button4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(0, 45, Short.MAX_VALUE))
         );
         PanelMenuLayout.setVerticalGroup(
             PanelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -233,11 +247,12 @@ public class Principal extends javax.swing.JFrame {
                 .addGroup(PanelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(button3, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(button4, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(PanelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
+                    .addComponent(config, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2))
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addGap(46, 46, 46))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -246,7 +261,7 @@ public class Principal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(PanelMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 484, Short.MAX_VALUE))
+                .addGap(0, 921, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -310,6 +325,12 @@ public class Principal extends javax.swing.JFrame {
          t.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void configActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_configActionPerformed
+        // TODO add your handling code here:
+        Configuracion c=new Configuracion();
+        c.setVisible(true);
+    }//GEN-LAST:event_configActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -337,7 +358,12 @@ public class Principal extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
-
+        tarifasAuto.add(new Tarifa("1ra hora: $",2.00));
+        tarifasAuto.add(new Tarifa("Aparir de la 2da hora: ",1.50));
+        tarifasAuto.add(new Tarifa("Tarifa máxima diaria: ",7.00));
+        tarifasMoto.add(new Tarifa("1ra hora: $",1.00));
+        tarifasMoto.add(new Tarifa("Aparir de la 2da hora: ",0.50));
+        tarifasMoto.add(new Tarifa("Tarifa máxima diaria: ",4.30));
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -349,6 +375,7 @@ public class Principal extends javax.swing.JFrame {
                 // Inicio del programa principal
        
        // Cola ColaDeCarros = new Cola();
+        
         
         Scanner sc = new Scanner(System.in);
         //Lista Parqueaderos = new Lista();
@@ -377,6 +404,7 @@ public class Principal extends javax.swing.JFrame {
     private java.awt.Button button2;
     private java.awt.Button button3;
     private java.awt.Button button4;
+    private javax.swing.JButton config;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JFrame jFrame1;
