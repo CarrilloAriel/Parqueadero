@@ -2,14 +2,14 @@
 
                    Ticket
 
-Hora: 11.39        Fecha: 18-07-2021
+Hora: 19.40        Fecha: 18-07-2021
 
 
-Nombre: Nombre1
-Apellido: Apellido1
+Nombre: a
+Apellido: a
 
-Motocicleta
-Placa: asdf
+Automovil
+Placa: a
 
 
 Por favor guarde este ticket

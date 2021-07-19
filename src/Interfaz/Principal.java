@@ -7,6 +7,9 @@ package Interfaz;
 
 import Base.Cola;
 import Base.Lista;
+import java.awt.Desktop;
+import java.io.File;
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -37,9 +40,9 @@ public class Principal extends javax.swing.JFrame {
     PanelIngresarVehiculo panelingresarvehiculo;
     PanelRetirarVehiculo panelretirarvehiculo;
     
-    static Date abierto=new Date();
-    static Date cerrado=new Date();
-    Calendar cal = Calendar.getInstance();
+    static Date abierto=new Date(70,0,1,0,0);
+    static Date cerrado=new Date(70,0,1,23,59);
+    
     
     
     //PanelRetirarVehiculo panelretirarvehiculo;
@@ -313,8 +316,15 @@ public class Principal extends javax.swing.JFrame {
         //panelListarVehiculos.setVisible(true);
         panelingresarvehiculo.setVisible(false);
         //panelretirarvehiculo.setVisible(false);
-         revalidate();
-        repaint();
+        //C:\Usersusuario\Desktop\Tablas
+        
+        String path = "C:\\Users\\usuario\\Documents\\NetBeansProjects\\Parqueadero\\TABLA.txt";
+        File objetofile = new File (path);        
+        try {
+            Desktop.getDesktop().open(objetofile);
+        } catch (IOException ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_button3ActionPerformed
 
     private void button4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button4ActionPerformed

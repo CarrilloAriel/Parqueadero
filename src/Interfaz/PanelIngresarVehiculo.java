@@ -208,11 +208,36 @@ public class PanelIngresarVehiculo extends javax.swing.JPanel {
      
     private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
         
-        Calendar hoy = Calendar.getInstance();
-        //212
-            Date horaActual = hoy.getTime();
-            if(Principal.abierto.compareTo(horaActual)>0 || Principal.cerrado.compareTo(horaActual)<0){
-                JOptionPane.showMessageDialog(null, "Parqueadero Cerrado","Error!", JOptionPane.WARNING_MESSAGE);
+        
+        //Hora de entrada
+                DateFormat datef = new SimpleDateFormat("HH.mm");
+                Calendar ccc = Calendar.getInstance();
+                ccc.set(Calendar.YEAR,1970);
+                ccc.set(Calendar.MONTH,0);
+                ccc.set(Calendar.DAY_OF_MONTH,1);
+                Date horaActual = ccc.getTime();
+                
+                Calendar cccccc = Calendar.getInstance();
+                cccccc.set(Calendar.YEAR,1970);
+                cccccc.set(Calendar.MONTH,0);
+                cccccc.set(Calendar.DAY_OF_MONTH,1);
+                horaActual=ccc.getTime();
+
+                hora = datef.format(horaActual);
+                String abiertoooo = datef.format(Principal.abierto);
+                String cerradooooo = datef.format(Principal.cerrado);
+                System.out.println(hora);
+                System.out.println(abiertoooo + cerradooooo);
+                System.out.println("antes de abierto? "+(Principal.abierto.compareTo(horaActual)>0));
+                System.out.println("despues de cerrado? "+(Principal.cerrado.compareTo(horaActual)<0));
+                System.out.println("Ho yes" + horaActual);
+                System.out.println("abierto cerrado a las "+Principal.abierto+Principal.cerrado);
+                
+            if(Principal.abierto.compareTo(horaActual)>0){
+                JOptionPane.showMessageDialog(null, "Parqueadero por abrir","Error!", JOptionPane.WARNING_MESSAGE);
+            }
+            else if (Principal.cerrado.compareTo(horaActual)<0){
+                JOptionPane.showMessageDialog(null, "Parqueadero ya cerro","Error!", JOptionPane.WARNING_MESSAGE);
             }
             else{
                 try {

@@ -181,6 +181,51 @@ public class Lista {
         
         return false;
     }
+    public String buscarNombre(String placa){
+        NodoLista aux = inicio;
+        String r = "";
+        while(aux!=null){
+            if(aux.getDato().getCarro()!=null){
+                if(placa.compareTo(aux.getDato().getCarro().getPlaca())==0){
+                    r = aux.getDato().getCarro().getPersona().getNombre();
+                    break;
+                }                            
+            }
+            aux = aux.getSiguiente();
+        }
+    return r;        
+    }
+    public String buscarTipo(String placa){
+        NodoLista aux = inicio;
+        String r = null;
+        while(aux!=null){
+            if(aux.getDato().getCarro()!=null){
+                if(placa.compareTo(aux.getDato().getCarro().getPlaca())==0){
+                    r = aux.getDato().getCarro().getTipo();
+                    break;
+                }
+            
+            }
+            aux = aux.getSiguiente();
+        }
+    return r;        
+    }
+    
+    public String buscarApellido(String placa){
+        NodoLista aux = inicio;
+        String r = null;
+        while(aux!=null){
+            if(aux.getDato().getCarro()!=null){
+                if(placa.compareTo(aux.getDato().getCarro().getPlaca())==0){
+                    r = aux.getDato().getCarro().getPersona().getApellido();
+                    
+                }            
+            }
+            aux = aux.getSiguiente();
+        }
+    return r;
+    }
+    
     public Date buscarHoraEntrada(String placa){
         Date hora=null;
         NodoLista aux = inicio;

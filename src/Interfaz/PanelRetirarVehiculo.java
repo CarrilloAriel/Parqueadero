@@ -8,8 +8,11 @@ package Interfaz;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.Statement;
 import java.awt.Desktop;
+import java.io.BufferedWriter;
 import java.io.File;
+
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
@@ -255,53 +258,51 @@ public class PanelRetirarVehiculo extends javax.swing.JFrame {
                     } catch (Exception ex) {
                         Logger.getLogger(PanelIngresarVehiculo.class.getName()).log(Level.SEVERE, null, ex);
                     }
+                    
                                  
             }
-            
-            
-          
+            BufferedWriter bw = null;	
+        FileWriter fw = null;	
+    try {	
+        	
+        File file = new File("TABLA.txt");	
+        	
+        if (!file.exists()) {	
+            file.createNewFile();	
+        }	
+        	
+        fw = new FileWriter(file.getAbsoluteFile(), true);	
+        bw = new BufferedWriter(fw); 	
+        
+        String nombre = Principal.Parqueaderos.buscarNombre(Rplaca.getText());
+        String apellido = Principal.Parqueaderos.buscarApellido(Rplaca.getText());	
+        String tipo = Principal.Parqueaderos.buscarTipo(Rplaca.getText());
+        Double valor = Principal.Parqueaderos.valorPagar(Rplaca.getText(),min);
+        
+        bw.write("\n"+nombre+	
+                "\t\t"+apellido+	
+                "\t\t"+tipo+	
+                "\t\t"+Rplaca.getText()+	
+                "\t\t"+horaEntrada+	
+                "\t\t"+horaSalida+"\t\t$"+valor);	
+        	
+        	
+    } catch (IOException e) {	
+        e.printStackTrace();	
+    } finally {	
+        try {	
+            //Cierra instancias de FileWriter y BufferedWriter	
+            if (bw != null)	
+                bw.close();	
+            if (fw != null)	
+                fw.close();	
+        } catch (IOException ex) {	
+            ex.printStackTrace();	
+        }	
+    }
         }else{
             JOptionPane.showMessageDialog(null, "No se encontró el vehículo");
         }
-        
-        
-        
-        
-        
-       /* double valorAPagar=0.0;
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        Calendar cal  = Calendar.getInstance();
-        Date date = cal.getTime();
-        String fechaHora =dateFormat.format(date);
-       
-            
-            try {
-                Class.forName("com.mysql.jdbc.Driver");
-                Connection con = (Connection) DriverManager.getConnection("ldbc:mysql://localhost/bdparqueadero","root","");
-                Statement stat = (Statement) con.createStatement();
-                ResultSet rs =stat.executeQuery("SELECT horaentrada, tipobehiculo FROM vehiculos WHERE placa='"+Rplaca.getText()+"AND estado='Disponible'");
-                rs.first();
-                String horaSalida = rs.getString(1);
-                Date horasalida = dateFormat.parse(horaSalida);
-                int minutosACobrar =(int) (date.getTime()-horasalida.getTime())/60000;
-                System.out.println(minutosACobrar);
-                if(rs.getString(2).equals("Automovil")){
-                     valorAPagar = minutosACobrar*33.333;
-                    
-                }else{
-                    valorAPagar = minutosACobrar*16.666;
-                }
-                System.out.println("Valor a pagar por"+rs.getString(2)+"= "+valorAPagar);
-                stat.executeUpdate("UPDATE vehiculos SET horasalida= "+fechaHora+"',estado= 'No disponible'. valorpagado= "+valorAPagar+" WHERE placa= "+Rplaca.getText()+"AND estado='Disponible'");
-               int respuesta= JOptionPane.showConfirmDialog(null, "Valor a pagar: "+valorAPagar+"\nDesea Imprimir recibo", horaSalida, WIDTH);
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(PanelRetirarVehiculo.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (SQLException ex) {
-            Logger.getLogger(PanelRetirarVehiculo.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ParseException ex) {
-            Logger.getLogger(PanelRetirarVehiculo.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        */
         
     }//GEN-LAST:event_RetirarActionPerformed
 

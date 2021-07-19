@@ -3,14 +3,14 @@
                    RECIBO
 
 Fecha:18-07-2021
-Hora Entrada: 11.39        Hora Salida: 11.39
+Hora Entrada: 19.40        Hora Salida: 19.40
 
 
-Nombre: Nombre1
-Apellido: Apellido1
+Nombre: f
+Apellido: dff
 
-Tipo de Vehículo: Motocicleta
-Placa: asdf
+Tipo de Vehículo: Automovil
+Placa: ff
 Valor a pagar: 0.0
 
 
