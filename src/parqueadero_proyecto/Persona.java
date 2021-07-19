@@ -6,10 +6,7 @@ public class Persona {
 
     private String Nombre;
     private String Apellido;   
-    private Vehiculo vehiculo;
-    private String HoraEntrada;
-    private Date Fecha;
-
+   
     public Persona(String Nombre, String Apellido) {
         this.Nombre = Nombre;
         this.Apellido = Apellido;
@@ -17,14 +14,7 @@ public class Persona {
     public Persona(){
         
     }
-    /*public Persona(String Nombre, String Apellido, String HoraEntrada, Date Fecha) {
-        this.Nombre = Nombre;
-        this.Apellido = Apellido;
-        this.HoraEntrada = HoraEntrada;
-        this.Fecha = Fecha;
-    }*/
     
-
     public String getNombre() {
         return Nombre;
     }
@@ -40,27 +30,10 @@ public class Persona {
     public void setApellido(String Apellido) {
         this.Apellido = Apellido;
     }
-
-    public Date getFecha() {
-        return null;
-    }
-
-    public void setFecha(Date fecha) {
-       
-    }
-
-    public String getHoraEntrada() {
-        return HoraEntrada;
-    }
-
-    public void setHoraEntrada(String HoraEntrada) {
-        this.HoraEntrada = HoraEntrada;
-    }
-    
-    @Override
+ @Override
     public String toString() {
-        return "Persona{" + "Nombre=" + Nombre + ", Apellido=" + Apellido + ", vehiculo=" + vehiculo + ", HoraEntrada=" + HoraEntrada + "Fecha "+Fecha;
+        return "Persona{" + "Nombre=" + Nombre + ", Apellido=" + Apellido + '}';
     }
+  
 
-    
 }
