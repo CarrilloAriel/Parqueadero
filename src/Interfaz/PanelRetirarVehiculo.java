@@ -178,9 +178,9 @@ public class PanelRetirarVehiculo extends javax.swing.JFrame {
         
         if(Principal.Parqueaderos.buscarPlacaF(Rplaca.getText())){
             
-            String horaSalida="";
-            String horaEntrada="";
-            String fecha = "";
+            String horaSalida;
+            String horaEntrada;
+            String fecha;
             DateFormat dateForm = new SimpleDateFormat("dd-MM-yyyy");
             Calendar c = Calendar.getInstance();
             Date fechaEntrada = c.getTime();

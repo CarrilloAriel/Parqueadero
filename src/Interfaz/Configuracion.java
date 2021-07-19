@@ -54,7 +54,7 @@ public class Configuracion extends javax.swing.JFrame {
         tfMoto1era.setText(""+Principal.tarifasMoto.get(1).getValor());
         tfMoto2da.setText(""+Principal.tarifasMoto.get(2).getValor());
         tfMotoMax.setText(""+Principal.tarifasMoto.get(3).getValor());
-        setSize(800,499);
+        setSize(800,520);
         
         
         //Hora de entrada
@@ -71,6 +71,8 @@ public class Configuracion extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
         panelConfGeneral = new javax.swing.JPanel();
         layGeneral = new javax.swing.JLayeredPane();
         jLabel10 = new javax.swing.JLabel();
@@ -122,6 +124,12 @@ public class Configuracion extends javax.swing.JFrame {
         jLabel10.setText("Configuración");
 
         jLabel1.setText(" N° de plazas actuales");
+
+        nPlazasConf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nPlazasConfActionPerformed(evt);
+            }
+        });
 
         jLabel9.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel9.setText("Motocicleta");
@@ -217,78 +225,81 @@ public class Configuracion extends javax.swing.JFrame {
                     .addGroup(layGeneralLayout.createSequentialGroup()
                         .addGap(139, 139, 139)
                         .addComponent(jLabel1)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
                 .addGroup(layGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layGeneralLayout.createSequentialGroup()
-                        .addGroup(layGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel10)
+                        .addGroup(layGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layGeneralLayout.createSequentialGroup()
-                                .addGap(6, 6, 6)
                                 .addComponent(horaAbierto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel14)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(nPlazasConf, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(horaCerrado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(horaCerrado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layGeneralLayout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addGap(64, 64, 64)))
                         .addGap(184, 184, 184))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layGeneralLayout.createSequentialGroup()
                         .addComponent(jLabel9)
                         .addGap(137, 137, 137))))
             .addGroup(layGeneralLayout.createSequentialGroup()
-                .addGroup(layGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(cambiar)
+                .addGroup(layGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layGeneralLayout.createSequentialGroup()
+                        .addGap(28, 28, 28)
                         .addGroup(layGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(cambiar)
                             .addGroup(layGeneralLayout.createSequentialGroup()
-                                .addGroup(layGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(layGeneralLayout.createSequentialGroup()
-                                        .addGap(16, 16, 16)
-                                        .addComponent(jLabel6))
+                                        .addGroup(layGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel5)
+                                            .addComponent(jLabel15))
+                                        .addGap(30, 30, 30))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layGeneralLayout.createSequentialGroup()
+                                        .addGroup(layGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layGeneralLayout.createSequentialGroup()
+                                                .addGap(12, 12, 12)
+                                                .addComponent(jLabel7))
+                                            .addComponent(jLabel6))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                                .addGroup(layGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(layGeneralLayout.createSequentialGroup()
-                                        .addGap(38, 38, 38)
-                                        .addComponent(jLabel7))
+                                        .addComponent(tfAuto1era, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel2)
+                                        .addGap(54, 54, 54))
                                     .addGroup(layGeneralLayout.createSequentialGroup()
-                                        .addGap(28, 28, 28)
-                                        .addComponent(jLabel15)))
-                                .addGap(12, 12, 12))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layGeneralLayout.createSequentialGroup()
-                                .addGap(40, 40, 40)
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                        .addGroup(layGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layGeneralLayout.createSequentialGroup()
-                                .addComponent(tfAutoMax, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel4)
-                                .addGap(37, 37, 37))
-                            .addGroup(layGeneralLayout.createSequentialGroup()
+                                        .addGroup(layGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layGeneralLayout.createSequentialGroup()
+                                                .addComponent(tfAutoInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(87, 87, 87)
+                                                .addComponent(jLabel16))
+                                            .addComponent(tfAuto2da, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(45, 45, 45))
+                                    .addGroup(layGeneralLayout.createSequentialGroup()
+                                        .addComponent(tfAutoMax, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel4)
+                                        .addGap(43, 43, 43)))
                                 .addGroup(layGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(tfAuto2da, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tfAutoInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(87, 87, 87)
-                                .addGroup(layGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel16)
-                                    .addComponent(jLabel3))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
-                            .addGroup(layGeneralLayout.createSequentialGroup()
-                                .addComponent(tfAuto1era, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel2)
-                                .addGap(53, 53, 53)))
-                        .addGroup(layGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(tfMotoMax, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
-                            .addComponent(tfMoto1era, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
-                            .addComponent(tfMoto2da, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
-                            .addComponent(tfMotoInicial))))
+                                    .addComponent(tfMoto2da, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(tfMotoMax, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
+                                        .addComponent(tfMoto1era, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
+                                        .addComponent(tfMotoInicial))))))
+                    .addGroup(layGeneralLayout.createSequentialGroup()
+                        .addGap(228, 228, 228)
+                        .addComponent(jLabel10)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layGeneralLayout.setVerticalGroup(
             layGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layGeneralLayout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addGap(32, 32, 32)
                 .addComponent(jLabel10)
-                .addGap(35, 35, 35)
+                .addGap(32, 32, 32)
                 .addGroup(layGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nPlazasConf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
@@ -308,25 +319,33 @@ public class Configuracion extends javax.swing.JFrame {
                     .addComponent(jLabel15)
                     .addComponent(tfMotoInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel16))
-                .addGap(20, 20, 20)
-                .addGroup(layGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfAuto1era, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel2)
-                    .addComponent(tfMoto1era, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
-                .addGroup(layGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(tfAuto2da, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
-                    .addComponent(tfMoto2da, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(tfAutoMax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4)
-                    .addComponent(tfMotoMax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(tfAuto1era, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel5))
+                    .addGroup(layGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel2)
+                        .addComponent(tfMoto1era, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layGeneralLayout.createSequentialGroup()
+                        .addGroup(layGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(tfAuto2da, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel6))
+                            .addComponent(jLabel3))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(tfAutoMax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7)))
+                    .addGroup(layGeneralLayout.createSequentialGroup()
+                        .addComponent(tfMoto2da, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(tfMotoMax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4))))
+                .addGap(44, 44, 44)
                 .addComponent(cambiar)
                 .addContainerGap(46, Short.MAX_VALUE))
         );
@@ -363,8 +382,18 @@ public class Configuracion extends javax.swing.JFrame {
         });
 
         rbMoto.setText("Motocicleta");
+        rbMoto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbMotoActionPerformed(evt);
+            }
+        });
 
         rbAutomovil.setText("Automóvil");
+        rbAutomovil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbAutomovilActionPerformed(evt);
+            }
+        });
 
         jButton1.setText("Guardar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -508,14 +537,18 @@ public class Configuracion extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnConfGeneral, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnConfCLiente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnConfCLiente, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnConfGeneral)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(panelConfGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(41, 41, 41))
         );
@@ -529,7 +562,7 @@ public class Configuracion extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnConfGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42)
+                .addGap(43, 43, 43)
                 .addComponent(btnConfCLiente, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -576,6 +609,43 @@ public class Configuracion extends javax.swing.JFrame {
         else if(inicio.compareTo(fin)==0){
             System.out.println("Ambas horas igual");
         }
+        boolean booTarifas;
+        double t1=0;
+        double t2=0;
+        double t3=0;
+        double t4=0;
+        double t5=0;
+        double t6=0;
+        double t7=0;
+        double t8=0;
+        try{
+            t1=Double.parseDouble(tfAutoInicial.getText());
+            t2=Double.parseDouble(tfAuto1era.getText());
+            t3=Double.parseDouble(tfAuto2da.getText());
+            t4=Double.parseDouble(tfAutoMax.getText());
+            t1=Double.parseDouble(tfMotoInicial.getText());
+            t2=Double.parseDouble(tfMoto1era.getText());
+            t3=Double.parseDouble(tfMoto2da.getText());
+            t4=Double.parseDouble(tfMotoMax.getText());
+            booTarifas=true;
+        }
+        catch(NumberFormatException e){
+            booTarifas=false;
+        }
+        if(booTarifas){
+            Principal.tarifasAuto.set(0, new Tarifa("Menos de 1 hora: $",Double.parseDouble(tfAutoInicial.getText())));
+            Principal.tarifasAuto.set(1, new Tarifa("1ra hora: $",Double.parseDouble(tfAuto1era.getText())));
+            Principal.tarifasAuto.set(2, new Tarifa("Apartir de la 2da hora: ",Double.parseDouble(tfAuto2da.getText())));
+            Principal.tarifasAuto.set(3, new Tarifa("Tarifa máxima diaria: ",Double.parseDouble(tfAutoMax.getText())));
+            Principal.tarifasMoto.set(0, new Tarifa("Menos de 1 hora: $",Double.parseDouble(tfMotoInicial.getText())));
+            Principal.tarifasMoto.set(1, new Tarifa("1ra hora: $",Double.parseDouble(tfMoto1era.getText())));
+            Principal.tarifasMoto.set(2, new Tarifa("Apartir de la 2da hora: ",Double.parseDouble(tfMoto2da.getText())));
+            Principal.tarifasMoto.set(3, new Tarifa("Tarifa máxima diaria: ",Double.parseDouble(tfMotoMax.getText())));
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "Ingrese numeros con el siguiente formato 0.00");
+        }
+        
         Principal.tarifasAuto.set(0, new Tarifa("Menos de 1 hora: $",Double.parseDouble(tfAutoInicial.getText())));
         Principal.tarifasAuto.set(1, new Tarifa("1ra hora: $",Double.parseDouble(tfAuto1era.getText())));
         Principal.tarifasAuto.set(2, new Tarifa("Apartir de la 2da hora: ",Double.parseDouble(tfAuto2da.getText())));
@@ -586,27 +656,42 @@ public class Configuracion extends javax.swing.JFrame {
         Principal.tarifasMoto.set(3, new Tarifa("Tarifa máxima diaria: ",Double.parseDouble(tfMotoMax.getText())));
         
         //cambio de plazas
-        if(Principal.Parqueaderos.contar()<=Integer.parseInt(nPlazasConf.getText())){
-            for(int i=Principal.Parqueaderos.contar()+1;i<Integer.parseInt(nPlazasConf.getText())+1;i++){
-                Principal.Parqueaderos.insertarFin(new Parqueadero("A"+i,null));
-            }
+        boolean booNplazas;
+        int nPlazasNuevo=0;
+        try{
+            nPlazasNuevo= Integer.parseInt(nPlazasConf.getText());
+            booNplazas=true;
         }
-        else{
-            if(Principal.Parqueaderos.contar()==Principal.Parqueaderos.contarLugaresDisponibles()){
-                int num =Principal.Parqueaderos.contar()-Integer.parseInt(nPlazasConf.getText());
-                for(int i = 0;i<num;i++){
-                    System.out.println(Principal.Parqueaderos.contar()-Integer.parseInt(nPlazasConf.getText()));
-                    try {
-                        Principal.Parqueaderos.eliminarFin();
-                    } catch (Exception ex) {
-                        Logger.getLogger(Configuracion.class.getName()).log(Level.SEVERE, null, ex);
+        catch(NumberFormatException e){
+            booNplazas=false;
+        }
+        
+        if(booNplazas){
+                if(Principal.Parqueaderos.contar()<=nPlazasNuevo){
+                    for(int i=Principal.Parqueaderos.contar()+1;i<nPlazasNuevo+1;i++){
+                        Principal.Parqueaderos.insertarFin(new Parqueadero("A"+i,null));
                     }
                 }
-            }
-            else{
-                JOptionPane.showMessageDialog(null, "No se puede disminuir la cantidad de plazas disponibles si hay autos dentro del parqueadero!","Error!", JOptionPane.ERROR_MESSAGE);
-            }
+                else{
+                    if(Principal.Parqueaderos.contar()==Principal.Parqueaderos.contarLugaresDisponibles()){
+                        int num =Principal.Parqueaderos.contar()-nPlazasNuevo;
+                        for(int i = 0;i<num;i++){
+                            System.out.println(Principal.Parqueaderos.contar()-nPlazasNuevo);
+                            try {
+                                Principal.Parqueaderos.eliminarFin();
+                            } catch (Exception ex) {
+                                Logger.getLogger(Configuracion.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                        }
+                    }
+                    else{
+                        JOptionPane.showMessageDialog(null, "No se puede disminuir la cantidad de plazas disponibles si hay autos dentro del parqueadero!","Error!", JOptionPane.ERROR_MESSAGE);
+                    }
+                }
+        }else{
+            JOptionPane.showMessageDialog(this, "Por favor ingrese un numero en el numero de plazas");
         }
+        
     }//GEN-LAST:event_cambiarActionPerformed
 
     private void btnConfCLienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfCLienteActionPerformed
@@ -620,6 +705,7 @@ public class Configuracion extends javax.swing.JFrame {
 
     private void btnConfGeneralActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfGeneralActionPerformed
         // TODO add your handling code here:
+        setSize(800,520);
         layGeneral.setVisible(true);
         layCliente.setVisible(false);
         revalidate();
@@ -649,6 +735,30 @@ public class Configuracion extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
         //Acciones BOton guardar
+        String p = buscarPlacaParaEditar.getText();
+        
+        if(rbAutomovil.isSelected()){
+                if(buscarPlacaParaEditar.getText().length()<8 || buscarPlacaParaEditar.getText().length()>8){
+                    if(buscarPlacaParaEditar.getText().length()<8){
+                    JOptionPane.showMessageDialog(null, "Placa muy corta, formato: ABC-1234");
+                    }
+                    else{
+                        JOptionPane.showMessageDialog(null, "Placa muy larga, formato: ABC-1234");
+                    }
+                }
+                
+            }
+            else if(rbMoto.isSelected()){
+                if(buscarPlacaParaEditar.getText().length()<6 || buscarPlacaParaEditar.getText().length()>6){
+                    if(buscarPlacaParaEditar.getText().length()<6){
+                    JOptionPane.showMessageDialog(null, "Placa muy corta, formato: AB123C");
+                    }
+                    else{
+                        JOptionPane.showMessageDialog(null, "Placa muy larga, formato: AB123C");
+                    }
+                }
+            }else{
+                Principal.Parqueaderos.buscarPlaca(buscarPlacaParaEditar.getText()).setPlaca(p);
         Principal.Parqueaderos.buscarPlaca(buscarPlacaParaEditar.getText()).setPersona(new Persona(tfNombrePorEditar.getText(), tfApellidoPorEditar.getText()));
         if (rbAutomovil.isSelected()) {
                     Principal.Parqueaderos.buscarPlaca(buscarPlacaParaEditar.getText()).setTipo("Automovil");
@@ -656,6 +766,9 @@ public class Configuracion extends javax.swing.JFrame {
         if (rbMoto.isSelected()) {
                     Principal.Parqueaderos.buscarPlaca(buscarPlacaParaEditar.getText()).setTipo("Motocicleta");
                 }
+            }
+        
+        
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -671,6 +784,20 @@ public class Configuracion extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tfAutoInicialActionPerformed
 
+    private void rbMotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbMotoActionPerformed
+        // TODO add your handling code here:
+        rbAutomovil.setSelected(false);
+    }//GEN-LAST:event_rbMotoActionPerformed
+
+    private void rbAutomovilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbAutomovilActionPerformed
+        // TODO add your handling code here:
+        rbMoto.setSelected(false);
+    }//GEN-LAST:event_rbAutomovilActionPerformed
+
+    private void nPlazasConfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nPlazasConfActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nPlazasConfActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -680,6 +807,8 @@ public class Configuracion extends javax.swing.JFrame {
     private javax.swing.JButton btnConfCLiente;
     private javax.swing.JButton btnConfGeneral;
     private javax.swing.JTextField buscarPlacaParaEditar;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JButton cambiar;
     private javax.swing.JTextField horaAbierto;
     private javax.swing.JTextField horaCerrado;

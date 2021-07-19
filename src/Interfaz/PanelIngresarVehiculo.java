@@ -52,6 +52,7 @@ public class PanelIngresarVehiculo extends javax.swing.JPanel {
      */
     public PanelIngresarVehiculo() {
         initComponents();
+        
 
     }
     
@@ -92,7 +93,7 @@ public class PanelIngresarVehiculo extends javax.swing.JPanel {
             }
         });
 
-        jLabel2.setText("Placa");
+        jLabel2.setText("Placa Motocicleta");
 
         jLabel3.setText("Nombre propietario");
 
@@ -132,6 +133,12 @@ public class PanelIngresarVehiculo extends javax.swing.JPanel {
             }
         });
 
+        tfPlaca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfPlacaActionPerformed(evt);
+            }
+        });
+
         jLabel5.setText("Nombre:");
 
         jLabel6.setText("Apellido:");
@@ -146,7 +153,6 @@ public class PanelIngresarVehiculo extends javax.swing.JPanel {
                     .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
                     .addComponent(jLabel3)
-                    .addComponent(jLabel2)
                     .addComponent(jLabel1))
                 .addGap(61, 61, 61))
             .addGroup(layout.createSequentialGroup()
@@ -158,27 +164,28 @@ public class PanelIngresarVehiculo extends javax.swing.JPanel {
                         .addComponent(rbMoto)
                         .addGap(57, 57, 57)
                         .addComponent(rbAuto))
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 4, Short.MAX_VALUE)
-                        .addComponent(tfPropietario, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(23, 23, 23)
-                        .addComponent(jLabel6)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(tfPropietario, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(23, 23, 23)
+                                .addComponent(jLabel6))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel2)
+                                .addComponent(tfPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(tfPropietario1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(41, 41, 41))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(153, 153, 153)
-                .addComponent(tfPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(jLabel1)
-                .addGap(43, 43, 43)
+                .addGap(31, 31, 31)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(tfPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3)
@@ -203,8 +210,6 @@ public class PanelIngresarVehiculo extends javax.swing.JPanel {
     String fechaHora = "";
     String hora = "";
     String fecha = "";
-    
-     public static final String DEST = "proyectoparqueadero/hello_world.pdf";
      
     private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
         
@@ -251,7 +256,24 @@ public class PanelIngresarVehiculo extends javax.swing.JPanel {
                     JOptionPane.showMessageDialog(null, "El vehiculo se encuentra actualmente en la cola de espera");
                 }
                 
-            }else{
+            }else if(rbAuto.isSelected() && (tfPlaca.getText().length()<8 || tfPlaca.getText().length()>8)){
+                    if(tfPlaca.getText().length()<8){
+                    JOptionPane.showMessageDialog(null, "Placa muy corta, formato: ABC-1234");
+                    }
+                    else{
+                        JOptionPane.showMessageDialog(null, "Placa muy larga, formato: ABC-1234");
+                    }
+                
+            }
+            else if(rbMoto.isSelected()&&(tfPlaca.getText().length()<6 || tfPlaca.getText().length()>6)){
+                    if(tfPlaca.getText().length()<6){
+                    JOptionPane.showMessageDialog(null, "Placa muy corta, formato: AB123C");
+                    }
+                    else{
+                        JOptionPane.showMessageDialog(null, "Placa muy larga, formato: AB123C");
+                    }
+            }
+            else{
                 String clasevehiculo = "";
                 if (rbAuto.isSelected()) {
                     clasevehiculo = "Automovil";
@@ -259,19 +281,19 @@ public class PanelIngresarVehiculo extends javax.swing.JPanel {
                 if (rbMoto.isSelected()) {
                     clasevehiculo = "Motocicleta";
                 }
-                 //Hora de entrada
+                //Hora de entrada
                 DateFormat dateForma = new SimpleDateFormat("HH.mm");
                 Calendar ca = Calendar.getInstance();
                 Date horaEntrada = ca.getTime();
                 hora = dateForma.format(horaEntrada);
-             //Fecha de entrada
+                //Fecha de entrada
                 DateFormat dateForm = new SimpleDateFormat("dd-MM-yyyy");
                 Calendar c = Calendar.getInstance();
                 Date fechaEntrada = c.getTime();
                 fecha = dateForm.format(fechaEntrada);
                 
                 if(tfPropietario.getText().compareTo("")==0 || tfPropietario1.getText().compareTo("")==0 || tfPlaca.getText().compareTo("")==0){
-                JOptionPane.showMessageDialog(null, "No se ha registrado :C, rellene todos los campos");
+                JOptionPane.showMessageDialog(null, "Por favor rellene todos los campos");
                 }else{
                 Principal.ColaDeCarros.insertar(new Vehiculo(tfPlaca.getText(),clasevehiculo,horaEntrada,new Persona(tfPropietario.getText(),tfPropietario1.getText())));
                 JOptionPane.showMessageDialog(null, "El vehiculo se registro exitosamente");
@@ -354,11 +376,17 @@ public class PanelIngresarVehiculo extends javax.swing.JPanel {
 
     private void rbMotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbMotoActionPerformed
         // TODO add your handling code here:
+        jLabel2.setText("Placa Motocicleta");
     }//GEN-LAST:event_rbMotoActionPerformed
 
     private void rbAutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbAutoActionPerformed
         // TODO add your handling code here:
+                jLabel2.setText("Placa Auto");
     }//GEN-LAST:event_rbAutoActionPerformed
+
+    private void tfPlacaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfPlacaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfPlacaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
