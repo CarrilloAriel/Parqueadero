@@ -32,9 +32,19 @@ public class Configuracion extends javax.swing.JFrame {
     String hora ="";
     
     public Configuracion() {
+        DateFormat f = new SimpleDateFormat("HH:mm");
         initComponents();
+        
+        
         setLocationRelativeTo(null);
         layCliente.setVisible(false);
+        //actualizacion del horario de atencion
+        String a =f.format(Principal.abierto);
+        String b = f.format(Principal.cerrado);
+        horaAbierto.setText(a);
+        horaCerrado.setText(b);
+        //fin actualizacion del horario de atencion
+        
         nPlazasConf.setText(""+Principal.Parqueaderos.contar());
         tfAuto1era.setText(""+Principal.tarifasAuto.get(0).getValor());
         tfAuto2da.setText(""+Principal.tarifasAuto.get(1).getValor());

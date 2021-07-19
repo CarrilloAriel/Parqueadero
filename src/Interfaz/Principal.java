@@ -10,8 +10,11 @@ import Base.Lista;
 import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -20,6 +23,7 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import parqueadero_proyecto.*;
 /**
@@ -27,7 +31,7 @@ import parqueadero_proyecto.*;
  * @author Principal
  */
 public class Principal extends javax.swing.JFrame {
-
+    
     /**
      * Creates new form Principal
      */
@@ -40,16 +44,38 @@ public class Principal extends javax.swing.JFrame {
     PanelIngresarVehiculo panelingresarvehiculo;
     PanelRetirarVehiculo panelretirarvehiculo;
     
-    static Date abierto=new Date(70,0,1,0,0);
-    static Date cerrado=new Date(70,0,1,23,59);
-    
-    
+    static Date abierto=new Date(70,0,1,8,0);
+    static Date cerrado=new Date(70,0,1,20,0);
     
     //PanelRetirarVehiculo panelretirarvehiculo;
     //PanelListarVehiculos panelListarVehiculos;
     public Principal() {
         setResizable(false);
         initComponents();
+        //inicio hora actual
+        DateTimeFormatter formateador = DateTimeFormatter.ofPattern("HH:mm");
+        DateFormat f = new SimpleDateFormat("HH:mm");
+        Runnable runnable = new Runnable(){
+            @Override
+            public void run(){
+                while(true){
+                    try{
+                        etiquetaReloj.setText(formateador.format(LocalDateTime.now()));
+                        String a =f.format(abierto);
+                        String b = f.format(cerrado);
+                        horarioAtención.setText("Horario de atención: "+a+" - "+b);
+                        Thread.sleep(500);
+                    }catch (InterruptedException e){
+                        e.printStackTrace();
+                    }
+                }
+            }
+        };
+        Thread hilo = new Thread(runnable);
+        hilo.start();
+        //fin hora actual
+        
+        
         setLocationRelativeTo(null);
         setSize(800,500);
         panelingresarvehiculo = new PanelIngresarVehiculo();
@@ -93,6 +119,8 @@ public class Principal extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         config = new javax.swing.JButton();
+        etiquetaReloj = new javax.swing.JLabel();
+        horarioAtención = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
         jFrame1.getContentPane().setLayout(jFrame1Layout);
@@ -204,7 +232,7 @@ public class Principal extends javax.swing.JFrame {
 
         config.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/tuerca logo.png"))); // NOI18N
         config.setText("jButton3");
-        config.setDisabledIcon(new javax.swing.ImageIcon("C:\\Users\\Usuario\\Downloads\\tuerca.png")); // NOI18N
+        config.setDisabledIcon(null);
         config.setMaximumSize(new java.awt.Dimension(50, 50));
         config.setMinimumSize(new java.awt.Dimension(50, 50));
         config.setPreferredSize(new java.awt.Dimension(50, 50));
@@ -213,6 +241,12 @@ public class Principal extends javax.swing.JFrame {
                 configActionPerformed(evt);
             }
         });
+
+        etiquetaReloj.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
+        etiquetaReloj.setText("ahora");
+
+        horarioAtención.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        horarioAtención.setText("Horario de atención");
 
         javax.swing.GroupLayout PanelMenuLayout = new javax.swing.GroupLayout(PanelMenu);
         PanelMenu.setLayout(PanelMenuLayout);
@@ -227,28 +261,39 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(jLabel2))
                 .addContainerGap())
             .addGroup(PanelMenuLayout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addGroup(PanelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(PanelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(PanelMenuLayout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(config, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(29, 29, 29)
+                        .addGroup(PanelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(PanelMenuLayout.createSequentialGroup()
+                                .addComponent(jButton1)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(config, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(PanelMenuLayout.createSequentialGroup()
+                                .addGroup(PanelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(button3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(button1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(PanelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(button2, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
+                                    .addComponent(button4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                     .addGroup(PanelMenuLayout.createSequentialGroup()
-                        .addGroup(PanelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(button3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(button1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(PanelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(button2, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
-                            .addComponent(button4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addContainerGap()
+                        .addComponent(horarioAtención)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(etiquetaReloj)))
                 .addGap(0, 45, Short.MAX_VALUE))
         );
         PanelMenuLayout.setVerticalGroup(
             PanelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelMenuLayout.createSequentialGroup()
-                .addGap(44, 44, 44)
+                .addGap(23, 23, 23)
+                .addGroup(PanelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(etiquetaReloj)
+                    .addComponent(horarioAtención))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -377,7 +422,7 @@ public class Principal extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>
+        //</editor-fold>        
         tarifasAuto.add(new Tarifa("1ra hora: $",2.00));
         tarifasAuto.add(new Tarifa("Aparir de la 2da hora: ",1.50));
         tarifasAuto.add(new Tarifa("Tarifa máxima diaria: ",7.00));
@@ -408,11 +453,11 @@ public class Principal extends javax.swing.JFrame {
                     Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 
-       
-      
             }
+            
         });
     }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PanelMenu;
@@ -421,6 +466,8 @@ public class Principal extends javax.swing.JFrame {
     private java.awt.Button button3;
     private java.awt.Button button4;
     private javax.swing.JButton config;
+    private javax.swing.JLabel etiquetaReloj;
+    private javax.swing.JLabel horarioAtención;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JFrame jFrame1;
