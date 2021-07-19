@@ -331,7 +331,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
         // TODO add your handling code here:
-         setSize(800,450);
+         //setSize(800,450);
         //panelListarVehiculos.setVisible(false);
         panelretirarvehiculo.setVisible(false);
         panelingresarvehiculo.setVisible(true);
@@ -342,7 +342,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void button2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2ActionPerformed
         // TODO add your handling code here:
-        setSize(800,450);
+        //setSize(800,450);
         //panelListarVehiculos.setVisible(false);
         panelingresarvehiculo.setVisible(false);
         
@@ -355,7 +355,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void button3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button3ActionPerformed
         // TODO add your handling code here:
-        setSize(1116,450);
+        //setSize(1116,450);
         
         //add(panelListarVehiculos);
         //panelListarVehiculos.setVisible(true);
@@ -363,7 +363,7 @@ public class Principal extends javax.swing.JFrame {
         //panelretirarvehiculo.setVisible(false);
         //C:\Usersusuario\Desktop\Tablas
         
-        String path = "C:\\Users\\usuario\\Documents\\NetBeansProjects\\Parqueadero\\TABLA.txt";
+        String path = "C:\\Users\\Dani\\Documents\\NetBeansProjects\\_PyParqueadero3.2\\Parqueadero\\TABLA.txt";
         File objetofile = new File (path);        
         try {
             Desktop.getDesktop().open(objetofile);

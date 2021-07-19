@@ -197,7 +197,10 @@ public class PanelRetirarVehiculo extends javax.swing.JFrame {
             int min=Principal.Parqueaderos.calcularTiempo(Rplaca.getText(),horS);
             to.setText(String.valueOf(min));
             vp.setText(String.valueOf(Principal.Parqueaderos.valorPagar(Rplaca.getText(),min)));
-       
+       String nombre = Principal.Parqueaderos.buscarNombre(Rplaca.getText());
+        String apellido = Principal.Parqueaderos.buscarApellido(Rplaca.getText());	
+        String tipo = Principal.Parqueaderos.buscarTipo(Rplaca.getText());
+        Double valor = Principal.Parqueaderos.valorPagar(Rplaca.getText(),min);
             Recibo recibo =new Recibo(horaEntrada,horaSalida,fecha,Rplaca.getText(),Principal.Parqueaderos.buscarPlaca(Rplaca.getText()).getPersona().getNombre(),Principal.Parqueaderos.buscarPlaca(Rplaca.getText()).getPersona().getApellido(),Principal.Parqueaderos.buscarPlaca(Rplaca.getText()).getTipo(),Principal.Parqueaderos.valorPagar(Rplaca.getText(),min));
             
             //Inicio Recibo
@@ -274,10 +277,7 @@ public class PanelRetirarVehiculo extends javax.swing.JFrame {
         fw = new FileWriter(file.getAbsoluteFile(), true);	
         bw = new BufferedWriter(fw); 	
         
-        String nombre = Principal.Parqueaderos.buscarNombre(Rplaca.getText());
-        String apellido = Principal.Parqueaderos.buscarApellido(Rplaca.getText());	
-        String tipo = Principal.Parqueaderos.buscarTipo(Rplaca.getText());
-        Double valor = Principal.Parqueaderos.valorPagar(Rplaca.getText(),min);
+        
         
         bw.write("\n"+nombre+	
                 "\t\t"+apellido+	

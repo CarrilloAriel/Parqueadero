@@ -1,0 +1,17 @@
+                SECUREPARK
+
+                   RECIBO
+
+Fecha:19-07-2021
+Hora Entrada: 13.04        Hora Salida: 13.04
+
+
+Nombre: Daniel
+Apellido: Erazo
+
+Tipo de Vehículo: Automovil
+Placa: HDB
+Valor a pagar: 0.0
+
+
+Gracias por Preferirnos

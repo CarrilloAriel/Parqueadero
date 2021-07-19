@@ -1,0 +1,17 @@
+                SECUREPARK
+
+                   RECIBO
+
+Fecha:19-07-2021
+Hora Entrada: 13.03        Hora Salida: 13.03
+
+
+Nombre: Isaac
+Apellido: Erazo
+
+Tipo de Vehículo: Automovil
+Placa: PDB
+Valor a pagar: 0.0
+
+
+Gracias por Preferirnos

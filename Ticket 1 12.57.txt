@@ -1,0 +1,16 @@
+                SECUREPARK
+
+                   Ticket
+
+Hora: 12.57        Fecha: 19-07-2021
+
+
+Nombre: Daniel
+Apellido: Erazo
+
+Automovil
+Placa: 1
+
+
+Por favor guarde este ticket
+La multa por la perdida de este ticket es de 15 USD

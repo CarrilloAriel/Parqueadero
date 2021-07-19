@@ -1,0 +1,17 @@
+                SECUREPARK
+
+                   RECIBO
+
+Fecha:19-07-2021
+Hora Entrada: 12.57        Hora Salida: 12.57
+
+
+Nombre: Daniel
+Apellido: Erazo
+
+Tipo de Vehículo: Automovil
+Placa: 1
+Valor a pagar: 0.0
+
+
+Gracias por Preferirnos

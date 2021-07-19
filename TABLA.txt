@@ -1,2 +1,6 @@
+NOMBRE		APELLIDO	  TIPO		       PLACA	       ENTRADA		SALIDA		VALOR
 
-		null		null		ff		19.40		19.40		$0.0
+Isaac		Erazo		Automovil		PDB		13.03		13.03		$0.0
+Daniel		Erazo		Automovil		HDB		13.04		13.04		$0.0
+Isaac		Erazo		Motocicleta		HKD		13.05		13.05		$0.0
+Daniel		Erazo		Motocicleta		FFF		13.06		13.06		$0.0
