@@ -196,12 +196,22 @@ public class PanelRetirarVehiculo extends javax.swing.JFrame {
             he.setText(horaEntrada);
             int min=Principal.Parqueaderos.calcularTiempo(Rplaca.getText(),horS);
             to.setText(String.valueOf(min));
-            vp.setText(String.valueOf(Principal.Parqueaderos.valorPagar(Rplaca.getText(),min)));
+            Tarifa ta0=Principal.tarifasAuto.get(0);
+            Tarifa ta1=Principal.tarifasAuto.get(1);
+            Tarifa ta2=Principal.tarifasAuto.get(2);
+            Tarifa ta3=Principal.tarifasAuto.get(3);
+            Tarifa tm0=Principal.tarifasMoto.get(0);
+            Tarifa tm1=Principal.tarifasMoto.get(1);
+            Tarifa tm2=Principal.tarifasMoto.get(2);
+            Tarifa tm3=Principal.tarifasMoto.get(3);
+            
+            vp.setText(String.valueOf(Principal.Parqueaderos.valorPagar(Rplaca.getText(),min,ta0,ta1,ta2,ta3,tm0,tm1,tm2,tm3)));
+            
        String nombre = Principal.Parqueaderos.buscarNombre(Rplaca.getText());
         String apellido = Principal.Parqueaderos.buscarApellido(Rplaca.getText());	
         String tipo = Principal.Parqueaderos.buscarTipo(Rplaca.getText());
-        Double valor = Principal.Parqueaderos.valorPagar(Rplaca.getText(),min);
-            Recibo recibo =new Recibo(horaEntrada,horaSalida,fecha,Rplaca.getText(),Principal.Parqueaderos.buscarPlaca(Rplaca.getText()).getPersona().getNombre(),Principal.Parqueaderos.buscarPlaca(Rplaca.getText()).getPersona().getApellido(),Principal.Parqueaderos.buscarPlaca(Rplaca.getText()).getTipo(),Principal.Parqueaderos.valorPagar(Rplaca.getText(),min));
+        Double valor = Principal.Parqueaderos.valorPagar(Rplaca.getText(),min,ta0,ta1,ta2,ta3,tm0,tm1,tm2,tm3);
+            Recibo recibo =new Recibo(horaEntrada,horaSalida,fecha,Rplaca.getText(),Principal.Parqueaderos.buscarPlaca(Rplaca.getText()).getPersona().getNombre(),Principal.Parqueaderos.buscarPlaca(Rplaca.getText()).getPersona().getApellido(),Principal.Parqueaderos.buscarPlaca(Rplaca.getText()).getTipo(),valor);
             
             //Inicio Recibo
                 String titulo = "Recibo "+Rplaca.getText()+" "+horaSalida+".txt";

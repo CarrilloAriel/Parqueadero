@@ -9,6 +9,7 @@ import java.text.ParseException;
 import java.util.Date;
 import jdk.nashorn.internal.ir.BreakNode;
 import parqueadero_proyecto.Parqueadero;
+import parqueadero_proyecto.Tarifa;
 import parqueadero_proyecto.Vehiculo;
 
 
@@ -262,7 +263,7 @@ public class Lista {
         return minutos;
         
     }
-    public double valorPagar(String placa, int minutos){
+    public double valorPagar(String placa, int minutos, Tarifa ta0,Tarifa ta1,Tarifa ta2,Tarifa ta3,Tarifa tm0,Tarifa tm1,Tarifa tm2,Tarifa tm3){
        double valor=0.0;
        NodoLista aux = inicio;
        while(aux!=null){
@@ -270,9 +271,26 @@ public class Lista {
                 if(placa.compareTo(aux.getDato().getCarro().getPlaca())==0){
                                        
                    if(aux.getDato().getCarro().getTipo().compareToIgnoreCase("Automovil")==0){
-                       valor=minutos*0.50;
+                       if( minutos==60){
+                           valor=ta1.getValor();
+                       }else if(minutos>=120){
+                           valor=ta2.getValor();
+                       }else if(minutos>=1440){
+                           valor=ta3.getValor();
+                       }else{
+                           valor=ta0.getValor();
+                       }
+                       
                    }else{
-                       valor=minutos*0.25;
+                       if( minutos==60){
+                           valor=tm1.getValor();
+                       }else if(minutos>=120){
+                           valor=tm2.getValor();
+                       }else if(minutos>=1440){
+                           valor=tm3.getValor();
+                       }else{
+                           valor=tm0.getValor();
+                       }
                    }
                 }
                 

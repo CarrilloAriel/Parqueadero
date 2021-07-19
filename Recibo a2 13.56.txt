@@ -1,0 +1,17 @@
+                SECUREPARK
+
+                   RECIBO
+
+Fecha:19-07-2021
+Hora Entrada: 13.56        Hora Salida: 13.55
+
+
+Nombre: bfg
+Apellido: dfsedf
+
+Tipo de Vehículo: Motocicleta
+Placa: a2
+Valor a pagar: 0.7
+
+
+Gracias por Preferirnos

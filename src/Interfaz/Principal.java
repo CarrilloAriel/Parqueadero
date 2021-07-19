@@ -422,11 +422,13 @@ public class Principal extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>        
+        //</editor-fold>     
+        tarifasAuto.add(new Tarifa("Menos de 1hora: ",0.50));
         tarifasAuto.add(new Tarifa("1ra hora: $",2.00));
         tarifasAuto.add(new Tarifa("Aparir de la 2da hora: ",1.50));
         tarifasAuto.add(new Tarifa("Tarifa máxima diaria: ",7.00));
-        tarifasMoto.add(new Tarifa("1ra hora: $",1.00));
+        tarifasMoto.add(new Tarifa("Menos de 1hora: ",0.25));
+        tarifasMoto.add(new Tarifa("1ra hora: ",1.00));
         tarifasMoto.add(new Tarifa("Aparir de la 2da hora: ",0.50));
         tarifasMoto.add(new Tarifa("Tarifa máxima diaria: ",4.30));
         /* Create and display the form */

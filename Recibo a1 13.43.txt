@@ -1,0 +1,17 @@
+                SECUREPARK
+
+                   RECIBO
+
+Fecha:19-07-2021
+Hora Entrada: 13.43        Hora Salida: 13.43
+
+
+Nombre: mi
+Apellido: s
+
+Tipo de Vehículo: Automovil
+Placa: a1
+Valor a pagar: 0.5
+
+
+Gracias por Preferirnos
